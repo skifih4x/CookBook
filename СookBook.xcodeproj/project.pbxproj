@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		001DA1802934CF8D00286368 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 001DA17F2934CF8D00286368 /* AppDelegate.swift */; };
-		001DA1822934CF8D00286368 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 001DA1812934CF8D00286368 /* SceneDelegate.swift */; };
 		001DA1842934CF8D00286368 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 001DA1832934CF8D00286368 /* ViewController.swift */; };
 		001DA1892934CF8E00286368 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 001DA1882934CF8E00286368 /* Assets.xcassets */; };
 		001DA18C2934CF8E00286368 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 001DA18A2934CF8E00286368 /* LaunchScreen.storyboard */; };
@@ -17,7 +16,6 @@
 /* Begin PBXFileReference section */
 		001DA17C2934CF8D00286368 /* СookBook.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "СookBook.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		001DA17F2934CF8D00286368 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		001DA1812934CF8D00286368 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		001DA1832934CF8D00286368 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		001DA1882934CF8E00286368 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		001DA18B2934CF8E00286368 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -54,14 +52,37 @@
 		001DA17E2934CF8D00286368 /* СookBook */ = {
 			isa = PBXGroup;
 			children = (
+				D9A2B84529354CFC00C32807 /* App */,
+				D9A2B84729354D3400C32807 /* Sources */,
+				D9A2B84629354D0D00C32807 /* Resources */,
+			);
+			path = "СookBook";
+			sourceTree = "<group>";
+		};
+		D9A2B84529354CFC00C32807 /* App */ = {
+			isa = PBXGroup;
+			children = (
 				001DA17F2934CF8D00286368 /* AppDelegate.swift */,
-				001DA1812934CF8D00286368 /* SceneDelegate.swift */,
-				001DA1832934CF8D00286368 /* ViewController.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		D9A2B84629354D0D00C32807 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
 				001DA1882934CF8E00286368 /* Assets.xcassets */,
 				001DA18A2934CF8E00286368 /* LaunchScreen.storyboard */,
 				001DA18D2934CF8E00286368 /* Info.plist */,
 			);
-			path = "СookBook";
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		D9A2B84729354D3400C32807 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				001DA1832934CF8D00286368 /* ViewController.swift */,
+			);
+			path = Sources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -136,7 +157,6 @@
 			files = (
 				001DA1842934CF8D00286368 /* ViewController.swift in Sources */,
 				001DA1802934CF8D00286368 /* AppDelegate.swift in Sources */,
-				001DA1822934CF8D00286368 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -277,7 +297,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = W9FSXFWG34;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "СookBook/Info.plist";
+				INFOPLIST_FILE = "СookBook/Resources/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -304,7 +324,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = W9FSXFWG34;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "СookBook/Info.plist";
+				INFOPLIST_FILE = "СookBook/Resources/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
