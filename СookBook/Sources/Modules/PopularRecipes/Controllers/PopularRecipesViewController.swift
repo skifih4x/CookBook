@@ -17,6 +17,7 @@ final class PopularRecipesViewController: UIViewController {
                            forCellReuseIdentifier: CollectionViewTableViewCell.identifier)
         tableView.delegate = self
         tableView.dataSource = self
+        tableView.translatesAutoresizingMaskIntoConstraints = false
         return tableView
     }()
 
@@ -30,7 +31,6 @@ final class PopularRecipesViewController: UIViewController {
 
     private func setupHierarchy() {
         view.addSubview(recipesTableView)
-
     }
 
     private func setupLayout() {
@@ -48,7 +48,6 @@ extension PopularRecipesViewController: UITableViewDelegate {
     func numberOfSections(in tableView: UITableView) -> Int {
         sectionTitles.count
     }
-
 }
 
 extension PopularRecipesViewController: UITableViewDataSource {
@@ -73,5 +72,12 @@ extension PopularRecipesViewController: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         sectionTitles[section]
+    }
+
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let defaultOffset = view.safeAreaInsets.top
+        let offset = scrollView.contentOffset.y + defaultOffset
+
+        navigationController?.navigationBar.transform = .init(translationX: 0, y: min(0, -offset))
     }
 }
