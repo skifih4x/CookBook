@@ -13,6 +13,7 @@
 		001DA18C2934CF8E00286368 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 001DA18A2934CF8E00286368 /* LaunchScreen.storyboard */; };
 		D9A2B84C29354ECF00C32807 /* CookTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9A2B84B29354ECF00C32807 /* CookTabBarController.swift */; };
 		D9A2B850293550D900C32807 /* SavedRecipesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9A2B84F293550D900C32807 /* SavedRecipesViewController.swift */; };
+		D9A2B8A229368A5100C32807 /* CollectionViewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9A2B8A129368A5100C32807 /* CollectionViewTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		001DA18D2934CF8E00286368 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D9A2B84B29354ECF00C32807 /* CookTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CookTabBarController.swift; sourceTree = "<group>"; };
 		D9A2B84F293550D900C32807 /* SavedRecipesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedRecipesViewController.swift; sourceTree = "<group>"; };
+		D9A2B8A129368A5100C32807 /* CollectionViewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,7 +112,8 @@
 		D9A2B84D2935506E00C32807 /* PopularRecipes */ = {
 			isa = PBXGroup;
 			children = (
-				001DA1832934CF8D00286368 /* PopularRecipesViewController.swift */,
+				D9A2B89F29368A0000C32807 /* Controllers */,
+				D9A2B8A029368A0D00C32807 /* Cells */,
 			);
 			path = PopularRecipes;
 			sourceTree = "<group>";
@@ -121,6 +124,22 @@
 				D9A2B84F293550D900C32807 /* SavedRecipesViewController.swift */,
 			);
 			path = SavedRecipes;
+			sourceTree = "<group>";
+		};
+		D9A2B89F29368A0000C32807 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				001DA1832934CF8D00286368 /* PopularRecipesViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		D9A2B8A029368A0D00C32807 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				D9A2B8A129368A5100C32807 /* CollectionViewTableViewCell.swift */,
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -193,6 +212,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D9A2B8A229368A5100C32807 /* CollectionViewTableViewCell.swift in Sources */,
 				D9A2B850293550D900C32807 /* SavedRecipesViewController.swift in Sources */,
 				D9A2B84C29354ECF00C32807 /* CookTabBarController.swift in Sources */,
 				001DA1842934CF8D00286368 /* PopularRecipesViewController.swift in Sources */,
