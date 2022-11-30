@@ -11,6 +11,9 @@
 		001DA1842934CF8D00286368 /* PopularRecipesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 001DA1832934CF8D00286368 /* PopularRecipesViewController.swift */; };
 		001DA1892934CF8E00286368 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 001DA1882934CF8E00286368 /* Assets.xcassets */; };
 		001DA18C2934CF8E00286368 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 001DA18A2934CF8E00286368 /* LaunchScreen.storyboard */; };
+		8467C09B2937BC3600DFEB87 /* Model in Resources */ = {isa = PBXBuildFile; fileRef = 8467C09A2937BC3600DFEB87 /* Model */; };
+		8467C09D2937BC4200DFEB87 /* Extension in Resources */ = {isa = PBXBuildFile; fileRef = 8467C09C2937BC4200DFEB87 /* Extension */; };
+		8467C09F2937BC4800DFEB87 /* NetworkService in Resources */ = {isa = PBXBuildFile; fileRef = 8467C09E2937BC4800DFEB87 /* NetworkService */; };
 		D9A2B84C29354ECF00C32807 /* CookTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9A2B84B29354ECF00C32807 /* CookTabBarController.swift */; };
 		D9A2B850293550D900C32807 /* SavedRecipesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9A2B84F293550D900C32807 /* SavedRecipesViewController.swift */; };
 		D9A2B8A229368A5100C32807 /* CollectionViewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9A2B8A129368A5100C32807 /* CollectionViewTableViewCell.swift */; };
@@ -23,6 +26,9 @@
 		001DA1882934CF8E00286368 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		001DA18B2934CF8E00286368 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		001DA18D2934CF8E00286368 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8467C09A2937BC3600DFEB87 /* Model */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Model; sourceTree = "<group>"; };
+		8467C09C2937BC4200DFEB87 /* Extension */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Extension; sourceTree = "<group>"; };
+		8467C09E2937BC4800DFEB87 /* NetworkService */ = {isa = PBXFileReference; lastKnownFileType = folder; path = NetworkService; sourceTree = "<group>"; };
 		D9A2B84B29354ECF00C32807 /* CookTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CookTabBarController.swift; sourceTree = "<group>"; };
 		D9A2B84F293550D900C32807 /* SavedRecipesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedRecipesViewController.swift; sourceTree = "<group>"; };
 		D9A2B8A129368A5100C32807 /* CollectionViewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewTableViewCell.swift; sourceTree = "<group>"; };
@@ -58,6 +64,9 @@
 		001DA17E2934CF8D00286368 /* СookBook */ = {
 			isa = PBXGroup;
 			children = (
+				8467C09A2937BC3600DFEB87 /* Model */,
+				8467C09C2937BC4200DFEB87 /* Extension */,
+				8467C09E2937BC4800DFEB87 /* NetworkService */,
 				D9A2B84729354D3400C32807 /* Sources */,
 				D9A2B84629354D0D00C32807 /* Resources */,
 			);
@@ -200,7 +209,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8467C09B2937BC3600DFEB87 /* Model in Resources */,
 				001DA18C2934CF8E00286368 /* LaunchScreen.storyboard in Resources */,
+				8467C09F2937BC4800DFEB87 /* NetworkService in Resources */,
+				8467C09D2937BC4200DFEB87 /* Extension in Resources */,
 				001DA1892934CF8E00286368 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
