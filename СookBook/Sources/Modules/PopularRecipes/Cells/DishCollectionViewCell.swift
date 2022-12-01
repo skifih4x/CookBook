@@ -14,7 +14,7 @@ class DishCollectionViewCell: UICollectionViewCell {
 
     private let dishImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.contentMode = .scaleAspectFill
+        imageView.contentMode = .scaleToFill
         return imageView
     }()
 
@@ -31,6 +31,12 @@ class DishCollectionViewCell: UICollectionViewCell {
         super.layoutSubviews()
         dishImageView.frame = contentView.bounds
     }
+
+//    override func prepareForReuse() {
+//        super.prepareForReuse()
+//        dishImageView.image = nil
+//    }
+
 
     func configure(with model: String) {
         dishImageView.kf.setImage(with: model.asUrl)
