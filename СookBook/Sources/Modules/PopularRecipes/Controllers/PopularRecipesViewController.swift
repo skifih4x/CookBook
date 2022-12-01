@@ -26,22 +26,23 @@ final class PopularRecipesViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
-//        title = "Команда 4"
+        //        title = "Команда 4"
         setupHierarchy()
         setupLayout()
 
-//        NetworkService.shared.fetchRandomDishes() { [weak self] result in
-//                    switch result {
-//                    case .success(let data):
-//                        self?.dish = data
-//                        print("Наш массив: \(self?.dish)")
-////                        self?.dishName.text = data[0].title
-////                        self?.dishImage.kf.setImage(with: data[0].image?.asUrl)
-////                        self?.instructionDish.text = data[0].instructions
-//                    case .failure(let error):
-//                        print(error)
-//                    }
-//                }
+        NetworkService.shared.fetchRandomDishes() { [weak self] result in
+            switch result {
+            case .success(let data):
+                self?.dish = data
+                self?.recipesTableView.reloadData()
+                print("Наш массив: \(self?.dish)")
+                //                        self?.dishName.text = data[0].title
+                //                        self?.dishImage.kf.setImage(with: data[0].image?.asUrl)
+                //                        self?.instructionDish.text = data[0].instructions
+            case .failure(let error):
+                print(error)
+            }
+        }
     }
 
     private func setupHierarchy() {
@@ -74,21 +75,28 @@ extension PopularRecipesViewController: UITableViewDataSource {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: CollectionViewTableViewCell.identifier, for: indexPath) as? CollectionViewTableViewCell else {
             return UITableViewCell()
         }
-        NetworkService.shared.fetchRandomDishes() { result in
-                    switch result {
-                    case .success(let data):
-                        self.dish = data
-                        cell.configure(with: self.dish)
 
-//                        print("Наш массив: \(self?.dish)")
-//                        self?.dishName.text = data[0].title
-//                        self?.dishImage.kf.setImage(with: data[0].image?.asUrl)
-//                        self?.instructionDish.text = data[0].instructions
-                    case .failure(let error):
-                        print(error)
-                    }
-                }
-        return cell
+        switch indexPath.section {
+        case 0:
+            cell.configure(with: dish)
+            //            NetworkService.shared.fetchRandomDishes() { result in
+            //                switch result {
+            //                case .success(let data):
+            //                    cell.configure(with: data)
+            //
+            //                    //                        print("Наш массив: \(self?.dish)")
+            //                    //                        self?.dishName.text = data[0].title
+            //                    //                        self?.dishImage.kf.setImage(with: data[0].image?.asUrl)
+            //                    //                        self?.instructionDish.text = data[0].instructions
+            //                case .failure(let error):
+            //                    print(error)
+            //                }
+            //            }
+            //            return cell
+        default:
+            return UITableViewCell()
+        }
+                    return cell
     }
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
