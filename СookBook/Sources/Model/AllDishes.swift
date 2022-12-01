@@ -8,6 +8,6 @@
 import Foundation
 
 struct AllDishes: Decodable {
-    //let recipes: [Dish]?
+    let recipes: [Dish]?
     let extendedIngredients: [Ingridients]?
 }

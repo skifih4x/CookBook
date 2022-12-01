@@ -23,6 +23,8 @@
 		D9A2B84C29354ECF00C32807 /* CookTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9A2B84B29354ECF00C32807 /* CookTabBarController.swift */; };
 		D9A2B850293550D900C32807 /* SavedRecipesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9A2B84F293550D900C32807 /* SavedRecipesViewController.swift */; };
 		D9A2B8A229368A5100C32807 /* CollectionViewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9A2B8A129368A5100C32807 /* CollectionViewTableViewCell.swift */; };
+		D9A2B8B329388B5100C32807 /* DishCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9A2B8B229388B5100C32807 /* DishCollectionViewCell.swift */; };
+		D9A2B8B629388D2D00C32807 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = D9A2B8B529388D2D00C32807 /* Kingfisher */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +46,7 @@
 		D9A2B84B29354ECF00C32807 /* CookTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CookTabBarController.swift; sourceTree = "<group>"; };
 		D9A2B84F293550D900C32807 /* SavedRecipesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedRecipesViewController.swift; sourceTree = "<group>"; };
 		D9A2B8A129368A5100C32807 /* CollectionViewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewTableViewCell.swift; sourceTree = "<group>"; };
+		D9A2B8B229388B5100C32807 /* DishCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DishCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,6 +54,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D9A2B8B629388D2D00C32807 /* Kingfisher in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -189,6 +193,7 @@
 			isa = PBXGroup;
 			children = (
 				D9A2B8A129368A5100C32807 /* CollectionViewTableViewCell.swift */,
+				D9A2B8B229388B5100C32807 /* DishCollectionViewCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -209,6 +214,9 @@
 			dependencies = (
 			);
 			name = "СookBook";
+			packageProductDependencies = (
+				D9A2B8B529388D2D00C32807 /* Kingfisher */,
+			);
 			productName = "СookBook";
 			productReference = 001DA17C2934CF8D00286368 /* СookBook.app */;
 			productType = "com.apple.product-type.application";
@@ -237,6 +245,9 @@
 				Base,
 			);
 			mainGroup = 001DA1732934CF8D00286368;
+			packageReferences = (
+				D9A2B8B429388D2D00C32807 /* XCRemoteSwiftPackageReference "Kingfisher" */,
+			);
 			productRefGroup = 001DA17D2934CF8D00286368 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -270,6 +281,7 @@
 				D9A2B850293550D900C32807 /* SavedRecipesViewController.swift in Sources */,
 				84648CF42937BDF5005BD7BD /* AppError.swift in Sources */,
 				D9A2B84C29354ECF00C32807 /* CookTabBarController.swift in Sources */,
+				D9A2B8B329388B5100C32807 /* DishCollectionViewCell.swift in Sources */,
 				84648CF22937BDF5005BD7BD /* ApiResponse.swift in Sources */,
 				001DA1842934CF8D00286368 /* PopularRecipesViewController.swift in Sources */,
 				84648CFF2937BE35005BD7BD /* AllDishes.swift in Sources */,
@@ -484,6 +496,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		D9A2B8B429388D2D00C32807 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		D9A2B8B529388D2D00C32807 /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D9A2B8B429388D2D00C32807 /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 001DA1742934CF8D00286368 /* Project object */;
 }
