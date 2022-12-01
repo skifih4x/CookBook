@@ -9,10 +9,9 @@ import Foundation
 
 struct Dish: Decodable {
     
-    
     let id: Int?
     let title, image: String?
     let instructions: String?
-    //let extendedIngredients: [Ingridients]?
+    let extendedIngredients: [Ingridients]?
     
 }

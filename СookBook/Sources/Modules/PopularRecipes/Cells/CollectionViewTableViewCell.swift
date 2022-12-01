@@ -11,12 +11,14 @@ final class CollectionViewTableViewCell: UITableViewCell {
     
     static let identifier = "CollectionViewTableViewCell"
 
+    private var dish = [Dish]()
+
     private lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.itemSize = CGSize(width: 140, height: 200)
         layout.scrollDirection = .horizontal
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "cell")
+        collectionView.register(DishCollectionViewCell.self, forCellWithReuseIdentifier: "cell")
         collectionView.delegate = self
         collectionView.dataSource = self
         return collectionView
@@ -34,7 +36,13 @@ final class CollectionViewTableViewCell: UITableViewCell {
     override func layoutSubviews() {
         super.layoutSubviews()
         collectionView.frame = contentView.bounds
-    
+    }
+
+    func configure(with dish: [Dish]) {
+        self.dish = dish
+        DispatchQueue.main.async { [weak self] in
+            self?.collectionView.reloadData()
+        }
     }
 }
 
@@ -45,12 +53,15 @@ extension CollectionViewTableViewCell: UICollectionViewDelegate {
 
 extension CollectionViewTableViewCell: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        10
+        dish.count
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath)
-        cell.backgroundColor = .green
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DishCollectionViewCell.identifier, for: indexPath) as? DishCollectionViewCell else {
+            return UICollectionViewCell()
+        }
+//        cell.configure(with: dish[indexPath.row].image ?? "")
+
         return cell
     }
 }

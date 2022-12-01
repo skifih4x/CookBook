@@ -24,9 +24,22 @@ final class PopularRecipesViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
-        title = "Команда 4"
+//        title = "Команда 4"
         setupHierarchy()
         setupLayout()
+
+        NetworkService.shared.fetchRandomDishes() { [weak self] result in
+                    switch result {
+                    case .success(let data):
+                        print(data)
+//                        print("Наш массив: \(self?.dish)")
+//                        self?.dishName.text = data[0].title
+//                        self?.dishImage.kf.setImage(with: data[0].image?.asUrl)
+//                        self?.instructionDish.text = data[0].instructions
+                    case .failure(let error):
+                        print(error)
+                    }
+                }
     }
 
     private func setupHierarchy() {
@@ -40,6 +53,22 @@ final class PopularRecipesViewController: UIViewController {
             recipesTableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             recipesTableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
+    }
+
+    func upload() {
+        NetworkService.shared.fetchRandomDishes() { result in
+            switch result {
+            case .success(let dish):
+                print(dish)
+//                self.dish = dish
+                //                        print("Наш массив: \(self?.dish)")
+                //                        self?.dishName.text = data[0].title
+                //                        self?.dishImage.kf.setImage(with: data[0].image?.asUrl)
+                //                        self?.instructionDish.text = data[0].instructions
+            case .failure(let error):
+                print(error)
+            }
+        }
     }
 }
 
@@ -59,6 +88,20 @@ extension PopularRecipesViewController: UITableViewDataSource {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: CollectionViewTableViewCell.identifier, for: indexPath) as? CollectionViewTableViewCell else {
             return UITableViewCell()
         }
+
+//        NetworkService.shared.fetchRandomDishes() { result in
+//                    switch result {
+//                    case .success(let dish):
+//                        cell.configure(with: dish)
+////                        self?.dish = data
+////                        print("Наш массив: \(self?.dish)")
+////                        self?.dishName.text = data[0].title
+////                        self?.dishImage.kf.setImage(with: data[0].image?.asUrl)
+////                        self?.instructionDish.text = data[0].instructions
+//                    case .failure(let error):
+//                        print(error)
+//                    }
+//                }
         return cell
     }
 
