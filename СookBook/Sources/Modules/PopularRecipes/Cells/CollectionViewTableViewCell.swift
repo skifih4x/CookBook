@@ -18,7 +18,7 @@ final class CollectionViewTableViewCell: UITableViewCell {
         layout.itemSize = CGSize(width: 140, height: 200)
         layout.scrollDirection = .horizontal
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        collectionView.register(DishCollectionViewCell.self, forCellWithReuseIdentifier: "cell")
+        collectionView.register(DishCollectionViewCell.self, forCellWithReuseIdentifier: DishCollectionViewCell.identifier)
         collectionView.delegate = self
         collectionView.dataSource = self
         return collectionView
@@ -60,7 +60,8 @@ extension CollectionViewTableViewCell: UICollectionViewDataSource {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DishCollectionViewCell.identifier, for: indexPath) as? DishCollectionViewCell else {
             return UICollectionViewCell()
         }
-//        cell.configure(with: dish[indexPath.row].image ?? "")
+        cell.configure(with: dish[indexPath.row].image ?? "")
+        print("PRINT\(dish[indexPath.row].image)")
 
         return cell
     }
