@@ -11,6 +11,10 @@ final class PopularRecipesViewController: UIViewController {
 
     let sectionTitles: [String] = ["Popular", "Trending", "Top rated"]
 
+    var popular = [Dish]()
+    var trending = [Dish]()
+    var topRated = [Dish]()
+
     private lazy var recipesTableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .grouped)
         tableView.register(CollectionViewTableViewCell.self,
@@ -24,9 +28,21 @@ final class PopularRecipesViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
-        title = "Команда 4"
+        //        title = "Команда 4"
         setupHierarchy()
         setupLayout()
+
+        fetchRecipes { [weak self] model in
+            self?.popular = model
+        }
+
+        fetchRecipes { [weak self] model in
+            self?.trending = model
+        }
+
+        fetchRecipes { [weak self] model in
+            self?.topRated = model
+        }
     }
 
     private func setupHierarchy() {
@@ -40,6 +56,18 @@ final class PopularRecipesViewController: UIViewController {
             recipesTableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             recipesTableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
+    }
+
+    func fetchRecipes(completion: @escaping ([Dish]) -> ()) {
+        NetworkService.shared.fetchRandomDishes() { [weak self] result in
+            switch result {
+            case .success(let data):
+                completion(data)
+                self?.recipesTableView.reloadData()
+            case .failure(let error):
+                print(error)
+            }
+        }
     }
 }
 
@@ -59,15 +87,26 @@ extension PopularRecipesViewController: UITableViewDataSource {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: CollectionViewTableViewCell.identifier, for: indexPath) as? CollectionViewTableViewCell else {
             return UITableViewCell()
         }
+
+        switch indexPath.section {
+        case 0:
+            cell.configure(with: popular)
+        case 1:
+            cell.configure(with: trending)
+        case 2:
+            cell.configure(with: topRated)
+        default:
+            return UITableViewCell()
+        }
         return cell
     }
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        200
+        300
     }
 
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        40
+        20
     }
 
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
