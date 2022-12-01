@@ -9,7 +9,7 @@ import Foundation
 
 extension String {
     
-    var asUrl:URL? {
+    var asUrl: URL? {
         return URL(string: self)
     }
 }

@@ -11,6 +11,8 @@ final class PopularRecipesViewController: UIViewController {
 
     let sectionTitles: [String] = ["Popular", "Trending", "Top rated"]
 
+    var dish = [Dish]()
+
     private lazy var recipesTableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .grouped)
         tableView.register(CollectionViewTableViewCell.self,
@@ -28,18 +30,18 @@ final class PopularRecipesViewController: UIViewController {
         setupHierarchy()
         setupLayout()
 
-        NetworkService.shared.fetchRandomDishes() { [weak self] result in
-                    switch result {
-                    case .success(let data):
-                        print(data)
+//        NetworkService.shared.fetchRandomDishes() { [weak self] result in
+//                    switch result {
+//                    case .success(let data):
+//                        self?.dish = data
 //                        print("Наш массив: \(self?.dish)")
-//                        self?.dishName.text = data[0].title
-//                        self?.dishImage.kf.setImage(with: data[0].image?.asUrl)
-//                        self?.instructionDish.text = data[0].instructions
-                    case .failure(let error):
-                        print(error)
-                    }
-                }
+////                        self?.dishName.text = data[0].title
+////                        self?.dishImage.kf.setImage(with: data[0].image?.asUrl)
+////                        self?.instructionDish.text = data[0].instructions
+//                    case .failure(let error):
+//                        print(error)
+//                    }
+//                }
     }
 
     private func setupHierarchy() {
@@ -53,22 +55,6 @@ final class PopularRecipesViewController: UIViewController {
             recipesTableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             recipesTableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
-    }
-
-    func upload() {
-        NetworkService.shared.fetchRandomDishes() { result in
-            switch result {
-            case .success(let dish):
-                print(dish)
-//                self.dish = dish
-                //                        print("Наш массив: \(self?.dish)")
-                //                        self?.dishName.text = data[0].title
-                //                        self?.dishImage.kf.setImage(with: data[0].image?.asUrl)
-                //                        self?.instructionDish.text = data[0].instructions
-            case .failure(let error):
-                print(error)
-            }
-        }
     }
 }
 
@@ -88,20 +74,20 @@ extension PopularRecipesViewController: UITableViewDataSource {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: CollectionViewTableViewCell.identifier, for: indexPath) as? CollectionViewTableViewCell else {
             return UITableViewCell()
         }
+        NetworkService.shared.fetchRandomDishes() { result in
+                    switch result {
+                    case .success(let data):
+                        self.dish = data
+                        cell.configure(with: self.dish)
 
-//        NetworkService.shared.fetchRandomDishes() { result in
-//                    switch result {
-//                    case .success(let dish):
-//                        cell.configure(with: dish)
-////                        self?.dish = data
-////                        print("Наш массив: \(self?.dish)")
-////                        self?.dishName.text = data[0].title
-////                        self?.dishImage.kf.setImage(with: data[0].image?.asUrl)
-////                        self?.instructionDish.text = data[0].instructions
-//                    case .failure(let error):
-//                        print(error)
-//                    }
-//                }
+//                        print("Наш массив: \(self?.dish)")
+//                        self?.dishName.text = data[0].title
+//                        self?.dishImage.kf.setImage(with: data[0].image?.asUrl)
+//                        self?.instructionDish.text = data[0].instructions
+                    case .failure(let error):
+                        print(error)
+                    }
+                }
         return cell
     }
 

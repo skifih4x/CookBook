@@ -33,7 +33,6 @@ class DishCollectionViewCell: UICollectionViewCell {
     }
 
     func configure(with model: String) {
-        guard let url = URL(string: model) else { return }
-        dishImageView.kf.setImage(with: url)
+        dishImageView.kf.setImage(with: model.asUrl)
     }
 }
