@@ -22,6 +22,9 @@ class DetalViewController: UIViewController {
         super.viewDidLoad()
         setup()
         setupTableView()
+        setcutstaint()
+        
+        self.view.backgroundColor = .white
         
         
         
@@ -29,40 +32,6 @@ class DetalViewController: UIViewController {
                            , forCellReuseIdentifier: "VegetableCell")
         tableView.dataSource = self
         tableView.delegate = self
-        
-        
-        
-        
-        
-        
-        stackView.axis  = NSLayoutConstraint.Axis.vertical
-        stackView.distribution  = UIStackView.Distribution.equalSpacing
-        stackView.alignment = UIStackView.Alignment.leading
-        stackView.spacing   = 10.0
-        
-        stackView.addArrangedSubview(labelNameDish)
-        stackView.addArrangedSubview(photoDish)
-        stackView.addArrangedSubview(likeLabel)
-        stackView.addArrangedSubview(descriptionDish)
-        stackView.addArrangedSubview(howMakeLabel)
-        stackView.addArrangedSubview(countIngrLabel)
-        
-        
-        stackView.translatesAutoresizingMaskIntoConstraints = false
-        
-        self.view.addSubview(stackView)
-        
-        
-        
-        NSLayoutConstraint.activate([
-            stackView.topAnchor.constraint(equalTo: view.topAnchor, constant: 70) ,
-            stackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 30) ,
-            stackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -30) ,
-            stackView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -(view.frame.height / 3 - 10) ) // -300
-            ])
-        
-        
-        photoDish.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
         
     }
     
@@ -247,5 +216,39 @@ extension DetalViewController {
         photoDish.widthAnchor.constraint(equalToConstant: 200.0).isActive = true
       
         self.view.addSubview(photoDish)
+    }
+}
+
+
+extension DetalViewController {
+    func  setcutstaint() {
+        stackView.axis  = NSLayoutConstraint.Axis.vertical
+        stackView.distribution  = UIStackView.Distribution.equalSpacing
+        stackView.alignment = UIStackView.Alignment.leading
+        stackView.spacing   = 10.0
+        
+        stackView.addArrangedSubview(labelNameDish)
+        stackView.addArrangedSubview(photoDish)
+        stackView.addArrangedSubview(likeLabel)
+        stackView.addArrangedSubview(descriptionDish)
+        stackView.addArrangedSubview(howMakeLabel)
+        stackView.addArrangedSubview(countIngrLabel)
+        
+        
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        
+        self.view.addSubview(stackView)
+        
+        
+        
+        NSLayoutConstraint.activate([
+            stackView.topAnchor.constraint(equalTo: view.topAnchor, constant: 70) ,
+            stackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 30) ,
+            stackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -30) ,
+            stackView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -(view.frame.height / 3 - 10) ) // -300
+        ])
+        
+        
+        photoDish.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
     }
 }
