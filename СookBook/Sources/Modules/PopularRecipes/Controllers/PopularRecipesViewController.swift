@@ -11,7 +11,9 @@ final class PopularRecipesViewController: UIViewController {
 
     let sectionTitles: [String] = ["Popular", "Trending", "Top rated"]
 
-    var dish = [Dish]()
+    var popular = [Dish]()
+    var trending = [Dish]()
+    var topRated = [Dish]()
 
     private lazy var recipesTableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .grouped)
@@ -26,22 +28,21 @@ final class PopularRecipesViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
-//        title = "Команда 4"
+        //        title = "Команда 4"
         setupHierarchy()
         setupLayout()
 
-//        NetworkService.shared.fetchRandomDishes() { [weak self] result in
-//                    switch result {
-//                    case .success(let data):
-//                        self?.dish = data
-//                        print("Наш массив: \(self?.dish)")
-////                        self?.dishName.text = data[0].title
-////                        self?.dishImage.kf.setImage(with: data[0].image?.asUrl)
-////                        self?.instructionDish.text = data[0].instructions
-//                    case .failure(let error):
-//                        print(error)
-//                    }
-//                }
+        fetchRecipes { [weak self] model in
+            self?.popular = model
+        }
+
+        fetchRecipes { [weak self] model in
+            self?.trending = model
+        }
+
+        fetchRecipes { [weak self] model in
+            self?.topRated = model
+        }
     }
 
     private func setupHierarchy() {
@@ -55,6 +56,18 @@ final class PopularRecipesViewController: UIViewController {
             recipesTableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             recipesTableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
+    }
+
+    func fetchRecipes(completion: @escaping ([Dish]) -> ()) {
+        NetworkService.shared.fetchRandomDishes() { [weak self] result in
+            switch result {
+            case .success(let data):
+                completion(data)
+                self?.recipesTableView.reloadData()
+            case .failure(let error):
+                print(error)
+            }
+        }
     }
 }
 
@@ -74,29 +87,26 @@ extension PopularRecipesViewController: UITableViewDataSource {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: CollectionViewTableViewCell.identifier, for: indexPath) as? CollectionViewTableViewCell else {
             return UITableViewCell()
         }
-        NetworkService.shared.fetchRandomDishes() { result in
-                    switch result {
-                    case .success(let data):
-                        self.dish = data
-                        cell.configure(with: self.dish)
 
-//                        print("Наш массив: \(self?.dish)")
-//                        self?.dishName.text = data[0].title
-//                        self?.dishImage.kf.setImage(with: data[0].image?.asUrl)
-//                        self?.instructionDish.text = data[0].instructions
-                    case .failure(let error):
-                        print(error)
-                    }
-                }
+        switch indexPath.section {
+        case 0:
+            cell.configure(with: popular)
+        case 1:
+            cell.configure(with: trending)
+        case 2:
+            cell.configure(with: topRated)
+        default:
+            return UITableViewCell()
+        }
         return cell
     }
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        200
+        300
     }
 
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        40
+        20
     }
 
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {

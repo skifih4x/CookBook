@@ -15,10 +15,11 @@ final class CollectionViewTableViewCell: UITableViewCell {
 
     private lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
-        layout.itemSize = CGSize(width: 140, height: 200)
+        layout.itemSize = CGSize(width: 140, height: 300)
         layout.scrollDirection = .horizontal
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.register(DishCollectionViewCell.self, forCellWithReuseIdentifier: DishCollectionViewCell.identifier)
+        collectionView.backgroundColor = .systemGray6
         collectionView.delegate = self
         collectionView.dataSource = self
         return collectionView
@@ -48,7 +49,6 @@ final class CollectionViewTableViewCell: UITableViewCell {
 
 extension CollectionViewTableViewCell: UICollectionViewDelegate {
 
-
 }
 
 extension CollectionViewTableViewCell: UICollectionViewDataSource {
@@ -60,9 +60,7 @@ extension CollectionViewTableViewCell: UICollectionViewDataSource {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DishCollectionViewCell.identifier, for: indexPath) as? DishCollectionViewCell else {
             return UICollectionViewCell()
         }
-        cell.configure(with: dish[indexPath.row].image ?? "")
-        print("PRINT\(dish[indexPath.row].image)")
-
+        cell.configure(with: dish[indexPath.row])
         return cell
     }
 }
