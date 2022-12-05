@@ -11,6 +11,9 @@
 		001DA1842934CF8D00286368 /* PopularRecipesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 001DA1832934CF8D00286368 /* PopularRecipesViewController.swift */; };
 		001DA1892934CF8E00286368 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 001DA1882934CF8E00286368 /* Assets.xcassets */; };
 		001DA18C2934CF8E00286368 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 001DA18A2934CF8E00286368 /* LaunchScreen.storyboard */; };
+		00B51AE5293E167700BE6F4D /* VegetableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00B51AE4293E167700BE6F4D /* VegetableCell.swift */; };
+		00B51AE7293E167E00BE6F4D /* DetalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00B51AE6293E167E00BE6F4D /* DetalViewController.swift */; };
+		00B51AE9293E168500BE6F4D /* InfoVeget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00B51AE8293E168500BE6F4D /* InfoVeget.swift */; };
 		84648CF12937BDF5005BD7BD /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84648CEC2937BDF5005BD7BD /* NetworkService.swift */; };
 		84648CF22937BDF5005BD7BD /* ApiResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84648CED2937BDF5005BD7BD /* ApiResponse.swift */; };
 		84648CF32937BDF5005BD7BD /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84648CEE2937BDF5005BD7BD /* Route.swift */; };
@@ -34,6 +37,9 @@
 		001DA1882934CF8E00286368 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		001DA18B2934CF8E00286368 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		001DA18D2934CF8E00286368 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		00B51AE4293E167700BE6F4D /* VegetableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VegetableCell.swift; sourceTree = "<group>"; };
+		00B51AE6293E167E00BE6F4D /* DetalViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetalViewController.swift; sourceTree = "<group>"; };
+		00B51AE8293E168500BE6F4D /* InfoVeget.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoVeget.swift; sourceTree = "<group>"; };
 		84648CEC2937BDF5005BD7BD /* NetworkService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		84648CED2937BDF5005BD7BD /* ApiResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiResponse.swift; sourceTree = "<group>"; };
 		84648CEE2937BDF5005BD7BD /* Route.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Route.swift; sourceTree = "<group>"; };
@@ -84,6 +90,40 @@
 				D9A2B84629354D0D00C32807 /* Resources */,
 			);
 			path = "СookBook";
+			sourceTree = "<group>";
+		};
+		00B51AEE293E173400BE6F4D /* DetailVC */ = {
+			isa = PBXGroup;
+			children = (
+				00B51AEF293E173B00BE6F4D /* Cell */,
+				00B51AF0293E173F00BE6F4D /* Controller */,
+				00B51AF1293E174400BE6F4D /* Model */,
+			);
+			path = DetailVC;
+			sourceTree = "<group>";
+		};
+		00B51AEF293E173B00BE6F4D /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				00B51AE4293E167700BE6F4D /* VegetableCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		00B51AF0293E173F00BE6F4D /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				00B51AE6293E167E00BE6F4D /* DetalViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		00B51AF1293E174400BE6F4D /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				00B51AE8293E168500BE6F4D /* InfoVeget.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		84648CEB2937BDD5005BD7BD /* NetworkService */ = {
@@ -149,6 +189,7 @@
 		D9A2B84929354E7F00C32807 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				00B51AEE293E173400BE6F4D /* DetailVC */,
 				D9A2B84A29354E9900C32807 /* CookTabBar */,
 				D9A2B84D2935506E00C32807 /* PopularRecipes */,
 				D9A2B84E2935509000C32807 /* SavedRecipes */,
@@ -287,6 +328,9 @@
 				84648CFF2937BE35005BD7BD /* AllDishes.swift in Sources */,
 				84648CF32937BDF5005BD7BD /* Route.swift in Sources */,
 				84648CFD2937BE35005BD7BD /* Dish.swift in Sources */,
+				00B51AE7293E167E00BE6F4D /* DetalViewController.swift in Sources */,
+				00B51AE5293E167700BE6F4D /* VegetableCell.swift in Sources */,
+				00B51AE9293E168500BE6F4D /* InfoVeget.swift in Sources */,
 				84648CF12937BDF5005BD7BD /* NetworkService.swift in Sources */,
 				001DA1802934CF8D00286368 /* AppDelegate.swift in Sources */,
 			);
