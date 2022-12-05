@@ -10,9 +10,6 @@ struct InfoVeget {
 
 }
 
-
-
-
 struct ImageName {
     static let vegetabls = "person"
     static let fillImage = "person.fill"

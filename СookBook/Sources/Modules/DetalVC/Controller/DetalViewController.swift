@@ -3,9 +3,6 @@ import UIKit
 
 class DetalViewController: UIViewController {
 
-
-    
-
     var labelNameDish = UILabel()
     var photoDish = UIImageView()
     var image = UIImage(named: "vagyu.jpg")
