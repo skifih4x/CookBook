@@ -29,6 +29,7 @@ class DetalViewController: UIViewController {
                            , forCellReuseIdentifier: "VegetableCell")
         tableView.dataSource = self
         tableView.delegate = self
+        tableView.separatorStyle = .none
         
     }
     
@@ -45,6 +46,7 @@ class DetalViewController: UIViewController {
 extension DetalViewController: UITableViewDataSource {
     
     
+    
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         vegetabls.count
@@ -55,6 +57,7 @@ extension DetalViewController: UITableViewDataSource {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "VegetableCell", for: indexPath) as? VegetableCell else { fatalError() }
 
         cell.configure(contact: vegetabls[indexPath.row] )
+        
     
     return cell
     }
@@ -90,8 +93,12 @@ extension DetalViewController: UITableViewDataSource {
         }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-            return 50
+            return 40
         }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 70
+    }
     
 }
 
@@ -116,6 +123,9 @@ extension DetalViewController {
         
         
     }
+    
+
+   
 }
 
 
@@ -173,10 +183,12 @@ extension DetalViewController {
     
     func setupLikeLabel() {
 
+
+        
         likeLabel.textColor = .black
         likeLabel.numberOfLines = 0
-        likeLabel.text = "❤️ 34 "
-        likeLabel.font = likeLabel.font.withSize(12)
+        likeLabel.text = "❤️ 34"
+        likeLabel.font = likeLabel.font.withSize(14)
         self.view.addSubview(likeLabel)
     }
     

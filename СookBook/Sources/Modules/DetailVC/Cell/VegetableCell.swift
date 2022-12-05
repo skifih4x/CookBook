@@ -28,12 +28,24 @@ class VegetableCell: UITableViewCell {
     }
     
     
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+
+        contentView.frame = contentView.frame.inset(by: UIEdgeInsets(top: 4, left: 0, bottom: 4, right: 0))
+    }
+      
     // нстройки для элементов внутри ячейки
     private func setupCell() {
         [avatar,nameLabel,descriptionLabel].forEach {
             $0.translatesAutoresizingMaskIntoConstraints = false
             contentView.addSubview($0)
         }
+        
+        contentView.backgroundColor = #colorLiteral(red: 0.9467813373, green: 0.9467813373, blue: 0.9467813373, alpha: 1)
+        contentView.layer.cornerRadius = 20
+        
+        
         
         NSLayoutConstraint.activate([
             avatar.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 16),
@@ -56,9 +68,11 @@ class VegetableCell: UITableViewCell {
             descriptionLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -10)
         ])
         
+        
+        
     }
 
-    // настраиваем читку?
+    // настраиваем читку
     func configure(contact: InfoVeget) {
         avatar.image = contact.image
         nameLabel.text = contact.name
