@@ -43,7 +43,6 @@ final class PopularRecipesViewController: UIViewController {
         fetchRecipes { [weak self] model in
             self?.topRated = model
         }
-
         
         NetworkService.shared.fetchRandomDishesIngridients(dishId: 1113485) { [weak self] result in
             switch result {
@@ -55,7 +54,6 @@ final class PopularRecipesViewController: UIViewController {
                 
             }
         }
-
     }
 
     private func setupHierarchy() {
@@ -82,7 +80,7 @@ final class PopularRecipesViewController: UIViewController {
             }
         }
     }
-
+    
 }
 
 extension PopularRecipesViewController: UITableViewDelegate {
