@@ -20,6 +20,7 @@
 		84AA87F6293E3CC4009B4464 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AA87F5293E3CC4009B4464 /* NetworkService.swift */; };
 		84AA87FE293F748C009B4464 /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AA87FD293F748C009B4464 /* Route.swift */; };
 		84AA8802293F79A7009B4464 /* PopularRecipesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AA8801293F79A7009B4464 /* PopularRecipesViewController.swift */; };
+		84AA8806293F7ED6009B4464 /* DetailVC in Resources */ = {isa = PBXBuildFile; fileRef = 84AA8805293F7ED6009B4464 /* DetailVC */; };
 		D9A2B84C29354ECF00C32807 /* CookTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9A2B84B29354ECF00C32807 /* CookTabBarController.swift */; };
 		D9A2B850293550D900C32807 /* SavedRecipesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9A2B84F293550D900C32807 /* SavedRecipesViewController.swift */; };
 		D9A2B8A229368A5100C32807 /* CollectionViewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9A2B8A129368A5100C32807 /* CollectionViewTableViewCell.swift */; };
@@ -43,6 +44,7 @@
 		84AA87F5293E3CC4009B4464 /* NetworkService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NetworkService.swift; path = "../../../../../Downloads/CookBookChallenge/СookBook/Sources/NetworkService/NetworkService.swift"; sourceTree = "<group>"; };
 		84AA87FD293F748C009B4464 /* Route.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Route.swift; sourceTree = "<group>"; };
 		84AA8801293F79A7009B4464 /* PopularRecipesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopularRecipesViewController.swift; sourceTree = "<group>"; };
+		84AA8805293F7ED6009B4464 /* DetailVC */ = {isa = PBXFileReference; lastKnownFileType = folder; path = DetailVC; sourceTree = "<group>"; };
 		D9A2B84B29354ECF00C32807 /* CookTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CookTabBarController.swift; sourceTree = "<group>"; };
 		D9A2B84F293550D900C32807 /* SavedRecipesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedRecipesViewController.swift; sourceTree = "<group>"; };
 		D9A2B8A129368A5100C32807 /* CollectionViewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewTableViewCell.swift; sourceTree = "<group>"; };
@@ -157,6 +159,7 @@
 		D9A2B84929354E7F00C32807 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				84AA8805293F7ED6009B4464 /* DetailVC */,
 				84AA8803293F79AD009B4464 /* Controller */,
 				D9A2B84A29354E9900C32807 /* CookTabBar */,
 				D9A2B84D2935506E00C32807 /* PopularRecipes */,
@@ -262,6 +265,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				84AA8806293F7ED6009B4464 /* DetailVC in Resources */,
 				001DA18C2934CF8E00286368 /* LaunchScreen.storyboard in Resources */,
 				001DA1892934CF8E00286368 /* Assets.xcassets in Resources */,
 			);
