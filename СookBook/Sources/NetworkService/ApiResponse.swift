@@ -9,7 +9,7 @@ import Foundation
 
 struct ApiResponse<T:Decodable>: Decodable {
     
-    let ingredients, recipes: T?
+    let recipes: T?
     let error: String?
     
 }

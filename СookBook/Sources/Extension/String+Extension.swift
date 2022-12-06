@@ -13,10 +13,3 @@ extension String {
         return URL(string: self)
     }
 }
-
-extension String {
-    
-    var asUrlImage: URL? {
-        return URL(string: "https://spoonacular.com/cdn/ingredients_100x100/" + self)
-    }
-}

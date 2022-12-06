@@ -16,13 +16,13 @@ struct NetworkService {
         request(route: .getRandomDish, method: .get, completion: completion)
     }
     
-    func fetchRandomDishesIngridients(dishId: Int,completion: @escaping(Result<[Ingridients],Error>) -> Void){
+    func fetchRandomDishesIngridients(dishId: String,completion: @escaping(Result<[Ingridients],Error>) -> Void){
         request(route: .getIngridients(dishId), method: .get, completion: completion)
     }
     
-    private func request<T:Decodable>(route: Rout, method: Method, parameters: [String:Any]? = nil, completion: @escaping(Result<T,Error>) -> Void) {
+    private func request<T:Decodable>(route: Rout, method: Method, completion: @escaping(Result<T,Error>) -> Void) {
         
-        guard let request = createRequest(route: route, method: method, params: parameters) else {
+        guard let request = createRequest(route: route, method: method) else {
             completion(.failure(AppError.unknownError))
             return
         }
@@ -58,23 +58,11 @@ struct NetworkService {
             if let decodedData = response.recipes {
                 completion(.success(decodedData))
             } else {
-                
-                let decodedData = response.ingredients
-                completion(.success(decodedData!))
-//                completion(.failure(AppError.unknownError))
-                }
-//            if let newData = response.ingredients {
-//                completion(.success(newData))
-//            }
-                
-            case .failure(let error):
-                completion(.failure(error))
-    
-//        case .failure(let newError):
-//            completion(.failure(newError))
+                completion(.failure(AppError.unknownError))
+            }
+        case .failure(let error):
+            completion(.failure(error))
         }
-    
-    
     }
     
     private func createRequest(route: Rout, method: Method, params: [String: Any]? = nil) -> URLRequest? {
