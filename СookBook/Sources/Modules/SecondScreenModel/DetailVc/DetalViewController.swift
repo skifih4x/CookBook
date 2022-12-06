@@ -33,6 +33,12 @@ class DetalViewController: UIViewController {
         tableView.delegate = self
         tableView.separatorStyle = .none
         
+        ingridientsFatch()
+        
+    }
+    
+    
+    private func ingridientsFatch() {
         NetworkService.shared.fetchRandomDishesIngridients(dishId: 1113485) { [weak self] result in
             switch result {
             case .success(let data):
@@ -69,6 +75,7 @@ extension DetalViewController: UITableViewDataSource {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "VegetableCell", for: indexPath) as? VegetableCell else { fatalError() }
         
         cell.configure(contact: vegetabls[indexPath.row])
+        cell.selectionStyle = .none
         
         return cell
     }
