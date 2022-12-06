@@ -10,6 +10,8 @@ import UIKit
 final class CollectionViewTableViewCell: UITableViewCell {
     
     static let identifier = "CollectionViewTableViewCell"
+    let vc = DetalViewController()
+    weak var myParent:PopularRecipesViewController?
 
     private var dish = [Dish]()
 
@@ -55,12 +57,22 @@ extension CollectionViewTableViewCell: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         dish.count
     }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+//        let vc = UINavigationController(rootViewController: DetalViewController())
+//        myParent?.navigationController?.pushViewController(vc, animated: true)
+        vc.id = dish[indexPath.row].id
+        
+        
+    }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DishCollectionViewCell.identifier, for: indexPath) as? DishCollectionViewCell else {
             return UICollectionViewCell()
         }
         cell.configure(with: dish[indexPath.row])
+        
         return cell
     }
 }

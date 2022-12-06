@@ -44,16 +44,7 @@ final class PopularRecipesViewController: UIViewController {
             self?.topRated = model
         }
         
-        NetworkService.shared.fetchRandomDishesIngridients(dishId: 1113485) { [weak self] result in
-            switch result {
-            case .success(let data):
-                //print(data[0].image?.asUrlImage)
-                print("мы получаем : \(data)")
-            case .failure(let error):
-                print(error)
-                
-            }
-        }
+        
     }
 
     private func setupHierarchy() {
@@ -84,22 +75,26 @@ final class PopularRecipesViewController: UIViewController {
 }
 
 extension PopularRecipesViewController: UITableViewDelegate {
-
+    
     func numberOfSections(in tableView: UITableView) -> Int {
         sectionTitles.count
     }
 }
 
 extension PopularRecipesViewController: UITableViewDataSource {
+    
+    
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         1
     }
-
+    
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: CollectionViewTableViewCell.identifier, for: indexPath) as? CollectionViewTableViewCell else {
             return UITableViewCell()
         }
-
+        
         switch indexPath.section {
         case 0:
             cell.configure(with: popular)

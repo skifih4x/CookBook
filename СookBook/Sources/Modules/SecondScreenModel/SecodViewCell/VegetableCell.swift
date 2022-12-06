@@ -73,10 +73,10 @@ class VegetableCell: UITableViewCell {
     }
 
     // настраиваем читку
-    func configure(contact: InfoVeget) {
-        avatar.image = contact.image
+    func configure(contact: Ingridients) {
+        avatar.kf.setImage(with: contact.image?.asUrlImage)
         nameLabel.text = contact.name
-        descriptionLabel.text = contact.desctiption
+        //descriptionLabel.text = contact.
     }
     
 }
