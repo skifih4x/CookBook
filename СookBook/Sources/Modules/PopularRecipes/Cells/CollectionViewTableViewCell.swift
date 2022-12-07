@@ -8,7 +8,7 @@
 import UIKit
 
 final class CollectionViewTableViewCell: UITableViewCell {
-    
+
     static let identifier = "CollectionViewTableViewCell"
 
     private var dish = [Dish]()

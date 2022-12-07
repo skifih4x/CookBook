@@ -9,7 +9,7 @@ import UIKit
 
 final class PopularRecipesViewController: UIViewController {
 
-    let sectionTitles: [String] = ["Popular", "Trending", "Top rated"]
+    let sectionTitles = ["Trending now🔥", "Popular"]
 
     var popular = [Dish]()
     var trending = [Dish]()
@@ -84,6 +84,7 @@ extension PopularRecipesViewController: UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+
         guard let cell = tableView.dequeueReusableCell(withIdentifier: CollectionViewTableViewCell.identifier, for: indexPath) as? CollectionViewTableViewCell else {
             return UITableViewCell()
         }
@@ -106,11 +107,45 @@ extension PopularRecipesViewController: UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        20
+        44
     }
 
-    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        sectionTitles[section]
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+
+        let header = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: 100))
+        header.backgroundColor = .secondarySystemBackground
+
+        let label = UILabel(frame: CGRect(x: 10, y: -20, width: 160, height: header.frame.size.height - 10))
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.text = sectionTitles[section]
+        label.font = .systemFont(ofSize: 20, weight: .bold)
+
+        let button = UIButton(frame: CGRect(x: 250, y: -20, width: 160, height: header.frame.size.height - 10))
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setTitle("See all →", for: .normal)
+        button.setTitleColor(.red, for: .normal)
+        button.addTarget(self, action: #selector(buttonAction), for: .touchUpInside)
+        button.tag = section
+
+        header.addSubview(label)
+        header.addSubview(button)
+
+        return header
+    }
+
+    @objc func buttonAction(button: UIButton) {
+        let section = button.tag
+
+        switch section {
+        case 0:
+            let vc = TrendingViewController()
+            navigationController?.pushViewController(vc, animated: true)
+        default:
+            let vc = PopularViewController()
+            navigationController?.pushViewController(vc, animated: true)
+        }
+
+
     }
 
     func scrollViewDidScroll(_ scrollView: UIScrollView) {

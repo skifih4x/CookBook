@@ -13,8 +13,8 @@ class DetalViewController: UIViewController {
     var vegetabls = Sourse.makeContacts()
     var tableView: UITableView = .init()
     let stackView   = UIStackView()
-    
-    
+
+
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
@@ -31,49 +31,35 @@ class DetalViewController: UIViewController {
         tableView.delegate = self
         
     }
-    
-    
-    
-    
-    
-        
-    }
-
-
- 
+}
 
 extension DetalViewController: UITableViewDataSource {
-    
-    
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         vegetabls.count
-        
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "VegetableCell", for: indexPath) as? VegetableCell else { fatalError() }
 
         cell.configure(contact: vegetabls[indexPath.row] )
-    
-    return cell
+
+        return cell
     }
-    
-    
-    
+
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-            let headerView = UIView.init(frame: CGRect.init(x: 10, y: 0, width: tableView.frame.width, height: 30))
+        let headerView = UIView.init(frame: CGRect.init(x: 10, y: 0, width: tableView.frame.width, height: 30))
         headerView.backgroundColor = .white
-            
-            let label = UILabel()
-            label.frame = CGRect.init(x: 5, y: 5, width: headerView.frame.width, height: headerView.frame.height)
-            label.text = "Ингридиенты"
-//            label.font = .systemFont(ofSize: 20)
-            label.font = UIFont(name:"HelveticaNeue-Bold", size: 20.0)
-            label.textColor = .black
-            headerView.addSubview(label)
-            
-            
+
+        let label = UILabel()
+        label.frame = CGRect.init(x: 5, y: 5, width: headerView.frame.width, height: headerView.frame.height)
+        label.text = "Ингридиенты"
+        //            label.font = .systemFont(ofSize: 20)
+        label.font = UIFont(name:"HelveticaNeue-Bold", size: 20.0)
+        label.textColor = .black
+        headerView.addSubview(label)
+
+
         let CountLabel = UILabel()
         CountLabel.frame = CGRect.init(x:  3 * headerView.frame.width/4, y: 5, width: headerView.frame.width, height: headerView.frame.height)
         CountLabel.text = "12 items"
@@ -81,17 +67,13 @@ extension DetalViewController: UITableViewDataSource {
         CountLabel.textColor = .black
         CountLabel.alpha = 0.8
         headerView.addSubview(CountLabel)
-        
-        
-        
-        
-        
-            return headerView
-        }
+
+        return headerView
+    }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-            return 50
-        }
+        return 50
+    }
     
 }
 
@@ -103,7 +85,6 @@ extension DetalViewController: UITableViewDelegate {
 extension DetalViewController {
     func setupTableView() {
         view.addSubview(tableView)
-        
         
         tableView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
@@ -211,7 +192,7 @@ extension DetalViewController {
         photoDish.clipsToBounds = true
         photoDish.heightAnchor.constraint(equalToConstant: 200.0).isActive = true
         photoDish.widthAnchor.constraint(equalToConstant: 200.0).isActive = true
-      
+
         self.view.addSubview(photoDish)
     }
 }

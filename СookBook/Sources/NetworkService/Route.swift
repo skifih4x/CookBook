@@ -10,7 +10,7 @@ import Foundation
 enum Rout {
     
     static let baseUrl = "https://api.spoonacular.com"
-    static let apiKey = "apiKey=43752d729e6042f99943ba1d9df48ce5"
+    static let apiKey = "apiKey=5bef6d96d4974fec9375c4f709c5152f"
     
     case getRandomDish
     case getIngridients(String)
