@@ -19,7 +19,7 @@ final class CookTabBarController: UITabBarController {
         tabBar.backgroundColor = .systemGray6
         tabBar.tintColor = .systemGreen
     }
-
+    
     private func setupTabBarViewControllers() {
 
         let popularRecipes = UINavigationController(rootViewController: PopularRecipesViewController())

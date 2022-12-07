@@ -59,6 +59,12 @@ final class PopularRecipesViewController: UIViewController {
             recipesTableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
     }
+    func segue() {
+        let vc = DetalViewController()
+        
+        self.navigationController?.pushViewController(vc, animated: true)
+        
+    }
 
     func fetchRecipes(completion: @escaping ([Dish]) -> ()) {
         NetworkService.shared.fetchRandomDishes() { [weak self] result in

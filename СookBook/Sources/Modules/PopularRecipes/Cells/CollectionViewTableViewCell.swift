@@ -10,10 +10,8 @@ import UIKit
 final class CollectionViewTableViewCell: UITableViewCell {
     
     static let identifier = "CollectionViewTableViewCell"
-    let vc = DetalViewController()
-    weak var myParent:PopularRecipesViewController?
-
     private var dish = [Dish]()
+    
 
     private lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -59,10 +57,6 @@ extension CollectionViewTableViewCell: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
-//        let vc = UINavigationController(rootViewController: DetalViewController())
-//        myParent?.navigationController?.pushViewController(vc, animated: true)
-        vc.id = dish[indexPath.row].id
         
         
     }

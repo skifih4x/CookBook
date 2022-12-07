@@ -14,7 +14,7 @@ class DetalViewController: UIViewController {
     var vegetabls = [Ingridients]()
     var id: Int?
     
-  
+    
     var tableView: UITableView = .init()
     let stackView   = UIStackView()
     
@@ -44,7 +44,7 @@ class DetalViewController: UIViewController {
             case .success(let data):
                 self?.vegetabls = data
                 self?.tableView.reloadData()
-                print("мы получаем : \(self?.vegetabls)")
+                //print("мы получаем : \(self?.vegetabls)")
                 //print(self?.dish)
             case .failure(let error):
                 print(error)
@@ -62,9 +62,6 @@ class DetalViewController: UIViewController {
 
 
 extension DetalViewController: UITableViewDataSource {
-    
-    
-    
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         vegetabls.count
