@@ -39,12 +39,12 @@ class DetalViewController: UIViewController {
     
     
     private func ingridientsFatch() {
-        NetworkService.shared.fetchRandomDishesIngridients(dishId: 1113485) { [weak self] result in
+        NetworkService.shared.fetchRandomDishesIngridients(dishId: 641461) { [weak self] result in
             switch result {
             case .success(let data):
                 self?.vegetabls = data
                 self?.tableView.reloadData()
-                //print("мы получаем : \(self?.vegetabls)")
+                print("мы получаем : \(self?.vegetabls)")
                 //print(self?.dish)
             case .failure(let error):
                 print(error)
