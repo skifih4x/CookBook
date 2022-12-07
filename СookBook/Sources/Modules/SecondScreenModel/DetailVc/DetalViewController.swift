@@ -199,11 +199,10 @@ extension DetalViewController {
     func setupLikeLabel() {
         
         
-        
         likeLabel.textColor = .black
         likeLabel.numberOfLines = 0
         likeLabel.text = "\(dish[0].aggregateLikes ?? 0) ❤️"
-        likeLabel.font = likeLabel.font.withSize(14)
+        likeLabel.font = likeLabel.font.withSize(18)
         self.view.addSubview(likeLabel)
     }
     

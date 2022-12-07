@@ -75,8 +75,12 @@ class VegetableCell: UITableViewCell {
     // настраиваем читку
     func configure(contact: Ingridients) {
         avatar.kf.setImage(with: contact.image?.asUrlImage)
-        nameLabel.text = contact.name
+        nameLabel.text = contact.name?.firstUppercased
         //descriptionLabel.text = contact.
     }
     
+}
+
+extension StringProtocol {
+    var firstUppercased: String { return prefix(1).uppercased() + dropFirst() }
 }
