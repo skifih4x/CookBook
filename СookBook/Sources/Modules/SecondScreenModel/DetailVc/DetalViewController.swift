@@ -12,8 +12,7 @@ class DetalViewController: UIViewController {
     let howMakeLabel = UILabel()
     let countIngrLabel = UILabel()
     var vegetabls = [Ingridients]()
-    var id: Int?
-    
+    var dish = [Dish]()
     
     var tableView: UITableView = .init()
     let stackView   = UIStackView()
@@ -32,27 +31,28 @@ class DetalViewController: UIViewController {
         tableView.dataSource = self
         tableView.delegate = self
         tableView.separatorStyle = .none
-        
         ingridientsFatch()
+        
         
     }
     
     
     private func ingridientsFatch() {
-        NetworkService.shared.fetchRandomDishesIngridients(dishId: 641461) { [weak self] result in
-            switch result {
-            case .success(let data):
-                self?.vegetabls = data
-                self?.tableView.reloadData()
-                print("мы получаем : \(self?.vegetabls)")
-                //print(self?.dish)
-            case .failure(let error):
-                print(error)
-                
-            }
-        }
         
-    }
+        NetworkService.shared.fetchRandomDishesIngridients(dishId: dish[0].id ?? 0) { [weak self] result in
+                switch result {
+                case .success(let data):
+                    self?.vegetabls = data
+                    self?.tableView.reloadData()
+                    print("мы получаем : \(self?.vegetabls)")
+                case .failure(let error):
+                    print(error)
+                    
+                }
+            }
+            
+        }
+    
     
     
     
@@ -161,7 +161,7 @@ extension DetalViewController {
     func setupHowMakeLabel() {
         howMakeLabel.textColor = .black
         howMakeLabel.numberOfLines = 0
-        howMakeLabel.text = "erferferferferferfwerfwerfwerfwervwercwercwerc"
+        howMakeLabel.text = "\(dish[0].instructions ?? "")"
         howMakeLabel.font = howMakeLabel.font.withSize(15)
         self.view.addSubview(howMakeLabel)
     }
@@ -185,7 +185,7 @@ extension DetalViewController {
         
         descriptionDish.textColor = .black
         descriptionDish.numberOfLines = 0
-        descriptionDish.text = "ferferferferferf"
+        descriptionDish.text = ""
         descriptionDish.font = descriptionDish.font.withSize(15)
         self.view.addSubview(descriptionDish)
         
@@ -202,7 +202,7 @@ extension DetalViewController {
         
         likeLabel.textColor = .black
         likeLabel.numberOfLines = 0
-        likeLabel.text = "35 ❤️"
+        likeLabel.text = "\(dish[0].aggregateLikes ?? 0) ❤️"
         likeLabel.font = likeLabel.font.withSize(14)
         self.view.addSubview(likeLabel)
     }
@@ -219,7 +219,7 @@ extension DetalViewController {
         
         labelNameDish.textColor = .black
         labelNameDish.numberOfLines = 0
-        labelNameDish.text = "How to make ... Dish "
+        labelNameDish.text = "How to make a \(dish[0].title ?? "") "
         //        labelNameDish.font = labelNameDish.font.withSize(22)
         labelNameDish.font = UIFont(name:"HelveticaNeue-Bold", size: 22.0)
         self.view.addSubview(labelNameDish)
@@ -233,7 +233,7 @@ extension DetalViewController {
     func setupPhotoDish() {
         
         
-        photoDish.image = image
+        photoDish.kf.setImage(with: dish[0].image?.asUrl)
         photoDish.layer.cornerRadius = 23
         photoDish.clipsToBounds = true
         photoDish.heightAnchor.constraint(equalToConstant: 200.0).isActive = true

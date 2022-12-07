@@ -7,14 +7,21 @@
 
 import UIKit
 
-final class PopularRecipesViewController: UIViewController {
-
+final class PopularRecipesViewController: UIViewController, CollectionViewTableViewCellDelegate {
+    func categoryTapped(_ cell: CollectionViewTableViewCell) {
+        let vc = DetalViewController()
+        vc.dish = CollectionViewTableViewCell.dishId
+        navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    var dishD : Dish?
+    
     let sectionTitles: [String] = ["Popular", "Trending", "Top rated"]
-
+    
     var popular = [Dish]()
     var trending = [Dish]()
     var topRated = [Dish]()
-
+    
     private lazy var recipesTableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .grouped)
         tableView.register(CollectionViewTableViewCell.self,
@@ -24,33 +31,33 @@ final class PopularRecipesViewController: UIViewController {
         tableView.translatesAutoresizingMaskIntoConstraints = false
         return tableView
     }()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
         //        title = "Команда 4"
         setupHierarchy()
         setupLayout()
-
+        
         fetchRecipes { [weak self] model in
             self?.popular = model
         }
-
+        
         fetchRecipes { [weak self] model in
             self?.trending = model
         }
-
+        
         fetchRecipes { [weak self] model in
             self?.topRated = model
         }
         
         
     }
-
+    
     private func setupHierarchy() {
         view.addSubview(recipesTableView)
     }
-
+    
     private func setupLayout() {
         NSLayoutConstraint.activate([
             recipesTableView.topAnchor.constraint(equalTo: view.topAnchor),
@@ -59,13 +66,7 @@ final class PopularRecipesViewController: UIViewController {
             recipesTableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
     }
-    func segue() {
-        let vc = DetalViewController()
-        
-        self.navigationController?.pushViewController(vc, animated: true)
-        
-    }
-
+    
     func fetchRecipes(completion: @escaping ([Dish]) -> ()) {
         NetworkService.shared.fetchRandomDishes() { [weak self] result in
             switch result {
@@ -101,6 +102,8 @@ extension PopularRecipesViewController: UITableViewDataSource {
             return UITableViewCell()
         }
         
+        cell.delegate = self
+        
         switch indexPath.section {
         case 0:
             cell.configure(with: popular)
@@ -113,23 +116,23 @@ extension PopularRecipesViewController: UITableViewDataSource {
         }
         return cell
     }
-
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         300
     }
-
+    
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         20
     }
-
+    
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         sectionTitles[section]
     }
-
+    
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let defaultOffset = view.safeAreaInsets.top
         let offset = scrollView.contentOffset.y + defaultOffset
-
+        
         navigationController?.navigationBar.transform = .init(translationX: 0, y: min(0, -offset))
     }
 }
