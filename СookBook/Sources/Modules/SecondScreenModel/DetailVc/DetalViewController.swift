@@ -17,11 +17,16 @@ class DetalViewController: UIViewController {
     
     var tableView: UITableView = .init()
     let stackView   = UIStackView()
+    var scrollView: UIScrollView = {
+            let scrollView = UIScrollView()
+            //view.backgroundColor = .red
+            scrollView.translatesAutoresizingMaskIntoConstraints = false
+            return scrollView
+        }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
-        setupTableView()
         setcutstaint()
         
         self.view.backgroundColor = .white
@@ -35,6 +40,13 @@ class DetalViewController: UIViewController {
         
         ingridientsFatch()
         
+        
+        
+        
+        
+        //
+        
+        //
     }
     
     
@@ -122,28 +134,6 @@ extension DetalViewController: UITableViewDelegate {
     
 }
 
-extension DetalViewController {
-    func setupTableView() {
-        view.addSubview(tableView)
-        
-        
-        tableView.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor,constant: 30),
-            tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor,constant: -30),
-            tableView.topAnchor.constraint(equalTo: view.bottomAnchor,constant: -(view.frame.height / 3)),//-310
-            tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
-            
-        ])
-        
-        
-    }
-    
-    
-    
-}
-
-
 
 extension DetalViewController {
     func setup () {
@@ -162,8 +152,9 @@ extension DetalViewController {
         howMakeLabel.textColor = .black
         howMakeLabel.numberOfLines = 0
         howMakeLabel.text = "erferferferferferfwerfwerfwerfwervwercwercwerc"
+//        howMakeLabel.text = "1234123412 grhkfdg[khd'fg fgjh [d[fgваыхзпшdgfsgdsfgdsfgdfgdfgdfgfgfdghdfghfdghfdghdfghdfghfdghfdghfdghfdghfghроывашоп оахп выаопыв оп11111111 pdfghd;fkgdkfsghsd[fgdiskfgh[dsfrhsdfghdgfhdshsdhsdfhfdhdsfh'gh'dskfh h[dfhgd'sfhghsdf;g hds;fhg;sdhfgsdhf222ghsdfgh [sdofhg[dsfh;kghsd ;fhg;sdfhg;sdhf;ghsdf333lghsd ;lfkgh;sdfhgosdfjhgo[sdfjhg[oisdj4444f [oihfogh]asofdg[sdifhgsj gsdhfg["
         howMakeLabel.font = howMakeLabel.font.withSize(15)
-        self.view.addSubview(howMakeLabel)
+        stackView.addSubview(howMakeLabel)
     }
 }
 
@@ -175,7 +166,7 @@ extension DetalViewController {
         countIngrLabel.numberOfLines = 0
         countIngrLabel.text = "23 rf"
         countIngrLabel.font = countIngrLabel.font.withSize(15)
-        self.view.addSubview(countIngrLabel)
+        stackView.addSubview(countIngrLabel)
     }
 }
 
@@ -186,9 +177,9 @@ extension DetalViewController {
         descriptionDish.textColor = .black
         descriptionDish.numberOfLines = 0
         descriptionDish.text = "ferferferferferf"
+//        descriptionDish.text = "Здесь будет описание блюда idfuhgpidfhghadfgh[adf[ghau[dfhgadhfgadfgh[afh[gadfoh[h  jdfg;dgjsdfgsdfhjghdsfhg;dshfjhsdjgfghdfghfdghfdghfghfdghh;sdjfhg;sdfh;gsdhf;gdsh;fgj11 fsjpgohsdfsjdfkas;dkl fhpdkfhpashdfhas;dfh;sa dhsdfhhsadfgh;sadhg;fashd;fhsa"
         descriptionDish.font = descriptionDish.font.withSize(15)
-        self.view.addSubview(descriptionDish)
-        
+        stackView.addSubview(descriptionDish)
     }
     
     
@@ -204,7 +195,7 @@ extension DetalViewController {
         likeLabel.numberOfLines = 0
         likeLabel.text = "35 ❤️"
         likeLabel.font = likeLabel.font.withSize(14)
-        self.view.addSubview(likeLabel)
+        stackView.addSubview(likeLabel)
     }
     
     
@@ -221,8 +212,8 @@ extension DetalViewController {
         labelNameDish.numberOfLines = 0
         labelNameDish.text = "How to make ... Dish "
         //        labelNameDish.font = labelNameDish.font.withSize(22)
-        labelNameDish.font = UIFont(name:"HelveticaNeue-Bold", size: 22.0)
-        self.view.addSubview(labelNameDish)
+        labelNameDish.font = UIFont(name:"HelveticaNeue-Bold", size: 24.0)
+        stackView.addSubview(labelNameDish)
     }
     
     
@@ -239,7 +230,7 @@ extension DetalViewController {
         photoDish.heightAnchor.constraint(equalToConstant: 200.0).isActive = true
         photoDish.widthAnchor.constraint(equalToConstant: 200.0).isActive = true
         
-        self.view.addSubview(photoDish)
+        stackView.addSubview(photoDish)
     }
 }
 
@@ -261,18 +252,84 @@ extension DetalViewController {
         
         stackView.translatesAutoresizingMaskIntoConstraints = false
         
-        self.view.addSubview(stackView)
+        
+        stackView.axis  = NSLayoutConstraint.Axis.vertical
+        stackView.distribution  = UIStackView.Distribution.equalSpacing
+        stackView.alignment = UIStackView.Alignment.leading
+
+        
+        stackView.addArrangedSubview(labelNameDish)
+        stackView.addArrangedSubview(photoDish)
+        stackView.addArrangedSubview(likeLabel)
+        stackView.addArrangedSubview(descriptionDish)
+        stackView.addArrangedSubview(howMakeLabel)
+        stackView.addArrangedSubview(countIngrLabel)
         
         
+        self.view.addSubview(scrollView)
+        scrollView.addSubview(stackView)
+        self.view.addSubview(tableView)
         
+        
+        labelNameDish.backgroundColor = .red
+        
+        scrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor,constant: 30).isActive = true
+        scrollView.trailingAnchor.constraint(equalTo: view.trailingAnchor,constant: -30).isActive = true
+        scrollView.topAnchor.constraint(equalTo: view.topAnchor,constant: 80).isActive = true
+        scrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -(view.frame.height / 3 - 10) ).isActive = true
+
+        
+        tableView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            stackView.topAnchor.constraint(equalTo: view.topAnchor, constant: 70) ,
-            stackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 30) ,
-            stackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -30) ,
-            stackView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -(view.frame.height / 3 - 10) ) // -300
+            tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor,constant: 30),
+            tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor,constant: -30),
+            tableView.topAnchor.constraint(equalTo: view.bottomAnchor,constant: -(view.frame.height / 3)),//-310
+            tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+            
         ])
         
         
+        scrollView.contentSize = CGSize(width: UIScreen.main.bounds.width, height: 2000)
+        
+        
+        
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        
+        
+ 
+
+        stackView.topAnchor.constraint(equalTo: scrollView.topAnchor).isActive = true
+        stackView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor).isActive = true
+        stackView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor).isActive = true
+        stackView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor).isActive = true
+        
+        
         photoDish.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
+        
+        
+        
+        labelNameDish.leadingAnchor.constraint(equalTo: stackView.leadingAnchor).isActive = true
+        labelNameDish.trailingAnchor.constraint(equalTo: stackView.trailingAnchor).isActive = true
+        labelNameDish.topAnchor.constraint(equalTo: stackView.topAnchor).isActive = true
+        
+        photoDish.leadingAnchor.constraint(equalTo: stackView.leadingAnchor).isActive = true
+        photoDish.trailingAnchor.constraint(equalTo: stackView.trailingAnchor).isActive = true
+        photoDish.topAnchor.constraint(equalTo: labelNameDish.bottomAnchor,constant: 27).isActive = true
+        
+        likeLabel.leadingAnchor.constraint(equalTo: stackView.leadingAnchor).isActive = true
+        likeLabel.trailingAnchor.constraint(equalTo: stackView.trailingAnchor).isActive = true
+        likeLabel.topAnchor.constraint(equalTo: photoDish.bottomAnchor,constant: 10).isActive = true
+        
+
+        descriptionDish.leadingAnchor.constraint(equalTo: stackView.leadingAnchor).isActive = true
+        descriptionDish.trailingAnchor.constraint(equalTo: stackView.trailingAnchor).isActive = true
+        descriptionDish.topAnchor.constraint(equalTo: likeLabel.bottomAnchor,constant: 27).isActive = true
+        
+        howMakeLabel.leadingAnchor.constraint(equalTo: stackView.leadingAnchor).isActive = true
+        howMakeLabel.trailingAnchor.constraint(equalTo: stackView.trailingAnchor).isActive = true
+        howMakeLabel.topAnchor.constraint(equalTo: descriptionDish.bottomAnchor,constant: 27).isActive = true
+
+        stackView.widthAnchor.constraint(equalTo: scrollView.widthAnchor).isActive = true
+
     }
 }

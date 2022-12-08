@@ -75,8 +75,18 @@ class VegetableCell: UITableViewCell {
     // настраиваем читку
     func configure(contact: Ingridients) {
         avatar.kf.setImage(with: contact.image?.asUrlImage)
-        nameLabel.text = contact.name
+        nameLabel.text = contact.name?.capitalizingFirstLetter()
         //descriptionLabel.text = contact.
     }
     
+}
+
+extension String {
+    func capitalizingFirstLetter() -> String {
+      return prefix(1).uppercased() + self.lowercased().dropFirst()
+    }
+
+    mutating func capitalizeFirstLetter() {
+      self = self.capitalizingFirstLetter()
+    }
 }
