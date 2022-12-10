@@ -53,4 +53,14 @@ extension SavedRecipesViewController: UITableViewDataSource {
 }
 
 extension SavedRecipesViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+            let deleteAction = UIContextualAction(style: .destructive, title: "Delete") { [weak self] _, _, complete in
+                
+                tableView.deleteRows(at: [indexPath], with: .automatic)
+                complete(true)
+            }
+            deleteAction.backgroundColor = .red
+
+            return UISwipeActionsConfiguration(actions: [deleteAction])
+        }
 }
