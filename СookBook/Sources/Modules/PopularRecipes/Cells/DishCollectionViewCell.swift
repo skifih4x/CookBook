@@ -104,7 +104,7 @@ class DishCollectionViewCell: UICollectionViewCell {
             fovouriteMarkButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -30),
             
             viewForLikes.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -70),
-            viewForLikes.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10),
+            viewForLikes.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
             viewForLikes.heightAnchor.constraint(equalToConstant: 22),
             viewForLikes.widthAnchor.constraint(equalToConstant: 62),
             

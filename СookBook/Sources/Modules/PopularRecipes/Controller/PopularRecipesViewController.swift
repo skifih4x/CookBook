@@ -130,7 +130,7 @@ extension PopularRecipesViewController: UITableViewDataSource {
         label.text = sectionTitles[section]
         label.font = .systemFont(ofSize: 20, weight: .bold)
 
-        let button = UIButton(frame: CGRect(x: 250, y: -45, width: 160, height: header.frame.size.height))
+        let button = UIButton(frame: CGRect(x: 270, y: -45, width: 160, height: header.frame.size.height))
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitle("See all →", for: .normal)
         button.setTitleColor(.red, for: .normal)
@@ -166,6 +166,5 @@ extension PopularRecipesViewController: UITableViewDataSource {
         let defaultOffset = view.safeAreaInsets.top
         let offset = scrollView.contentOffset.y + defaultOffset
         navigationController?.navigationBar.transform = .init(translationX: 0, y: min(0, -offset))
-        
     }
 }
