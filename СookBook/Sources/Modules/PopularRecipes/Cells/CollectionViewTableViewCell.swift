@@ -7,7 +7,7 @@
 
 import UIKit
 
-protocol CollectionViewTableViewCellDelegate : AnyObject {
+protocol CollectionViewTableViewCellDelegate: AnyObject {
     func categoryTapped(_ cell: CollectionViewTableViewCell)
 }
 
@@ -15,12 +15,10 @@ final class CollectionViewTableViewCell: UITableViewCell {
     
     static let identifier = "CollectionViewTableViewCell"
     static var dishId = [Dish]()
-    
     private var dish = [Dish]()
     
-    
     var delegate : CollectionViewTableViewCellDelegate?
-   
+    
     private lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.itemSize = CGSize(width: 300, height: 250)
@@ -56,7 +54,6 @@ final class CollectionViewTableViewCell: UITableViewCell {
 }
 
 extension CollectionViewTableViewCell: UICollectionViewDelegate {
-    
 }
 
 extension CollectionViewTableViewCell: UICollectionViewDataSource {
@@ -66,13 +63,11 @@ extension CollectionViewTableViewCell: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
-        
         CollectionViewTableViewCell.dishId = [dish[indexPath.row]]
         
-            if delegate != nil {
+        if delegate != nil {
             delegate?.categoryTapped(self)
-            }
-        
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {

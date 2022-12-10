@@ -35,7 +35,6 @@ final class PopularRecipesViewController: UIViewController, CollectionViewTableV
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
-        //        title = "Команда 4"
         setupHierarchy()
         setupLayout()
         
@@ -50,8 +49,6 @@ final class PopularRecipesViewController: UIViewController, CollectionViewTableV
         fetchRecipes { [weak self] model in
             self?.topRated = model
         }
-        
-        
     }
     
     private func setupHierarchy() {
@@ -78,7 +75,6 @@ final class PopularRecipesViewController: UIViewController, CollectionViewTableV
             }
         }
     }
-    
 }
 
 extension PopularRecipesViewController: UITableViewDelegate {
@@ -90,18 +86,14 @@ extension PopularRecipesViewController: UITableViewDelegate {
 
 extension PopularRecipesViewController: UITableViewDataSource {
     
-    
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         1
     }
-    
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: CollectionViewTableViewCell.identifier, for: indexPath) as? CollectionViewTableViewCell else {
             return UITableViewCell()
         }
-        
         cell.delegate = self
         
         switch indexPath.section {
@@ -118,8 +110,6 @@ extension PopularRecipesViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-
-
         270
     }
     
@@ -134,7 +124,6 @@ extension PopularRecipesViewController: UITableViewDataSource {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let defaultOffset = view.safeAreaInsets.top
         let offset = scrollView.contentOffset.y + defaultOffset
-        
         navigationController?.navigationBar.transform = .init(translationX: 0, y: min(0, -offset))
     }
 }
