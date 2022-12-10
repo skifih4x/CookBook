@@ -24,6 +24,5 @@ struct TopPop: Decodable {
     let instructions: String?
     let aggregateLikes: Int?
     let veryPopular: Bool?
-    let aggregateLikes: Int?    
-
+    
 }

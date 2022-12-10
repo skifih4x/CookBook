@@ -11,7 +11,7 @@ final class PopularRecipesViewController: UIViewController, CollectionViewTableV
     func categoryTapped(_ cell: CollectionViewTableViewCell) {
         let vc = DetalViewController()
         vc.dish = CollectionViewTableViewCell.dishId
-        navigationController?.present(vc, animated: true)
+        navigationController?.pushViewController(vc, animated: true)
     }
     
     var dishD : Dish?
@@ -77,7 +77,7 @@ final class PopularRecipesViewController: UIViewController, CollectionViewTableV
             }
         }
     }
-
+    
     func fetchRecipesTop(completion: @escaping ([Dish]) -> ()) {
         NetworkService.shared.fetchRandomTop() { [weak self] result in
             switch result {
@@ -90,7 +90,6 @@ final class PopularRecipesViewController: UIViewController, CollectionViewTableV
             }
         }
     }
-
 }
 
 
@@ -107,14 +106,18 @@ extension PopularRecipesViewController: UITableViewDelegate {
 
 extension PopularRecipesViewController: UITableViewDataSource {
     
+    
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         1
     }
+    
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: CollectionViewTableViewCell.identifier, for: indexPath) as? CollectionViewTableViewCell else {
             return UITableViewCell()
         }
+        
         cell.delegate = self
         
         switch indexPath.section {
@@ -131,11 +134,11 @@ extension PopularRecipesViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        270
+        300
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        10
+        20
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
@@ -145,6 +148,7 @@ extension PopularRecipesViewController: UITableViewDataSource {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let defaultOffset = view.safeAreaInsets.top
         let offset = scrollView.contentOffset.y + defaultOffset
+        
         navigationController?.navigationBar.transform = .init(translationX: 0, y: min(0, -offset))
     }
 }
