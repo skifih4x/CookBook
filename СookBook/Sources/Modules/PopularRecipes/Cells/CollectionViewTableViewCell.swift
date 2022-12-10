@@ -53,6 +53,13 @@ final class CollectionViewTableViewCell: UITableViewCell {
             self?.collectionView.reloadData()
         }
     }
+    
+//    func configureTop(with dish: [TopPop]) {
+//        self.dish = dish
+//        DispatchQueue.main.async { [weak self] in
+//            self?.collectionView.reloadData()
+//        }
+//    }
 }
 
 extension CollectionViewTableViewCell: UICollectionViewDelegate {
@@ -79,6 +86,7 @@ extension CollectionViewTableViewCell: UICollectionViewDataSource {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DishCollectionViewCell.identifier, for: indexPath) as? DishCollectionViewCell else {
             return UICollectionViewCell()
         }
+
         cell.configure(with: dish[indexPath.row])
         
         return cell

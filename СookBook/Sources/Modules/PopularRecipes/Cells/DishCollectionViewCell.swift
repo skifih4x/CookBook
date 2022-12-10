@@ -80,5 +80,7 @@ class DishCollectionViewCell: UICollectionViewCell {
         dishImageView.kf.setImage(with: model.image?.asUrl)
         titleLabel.text = model.title
         likesLabel.text = String(describing: model.aggregateLikes ?? 0)
+        
+        
     }
 }

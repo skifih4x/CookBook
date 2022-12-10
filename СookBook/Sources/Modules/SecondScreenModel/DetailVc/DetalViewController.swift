@@ -12,6 +12,7 @@ class DetalViewController: UIViewController {
     let howMakeLabel = UILabel()
     let countIngrLabel = UILabel()
     var vegetabls = [Ingridients]()
+    var dishDetail = [Results]()
     var dish = [Dish]()
     
     var tableView: UITableView = .init()
@@ -32,6 +33,7 @@ class DetalViewController: UIViewController {
         tableView.delegate = self
         tableView.separatorStyle = .none
         ingridientsFatch()
+        ingrDetailFetch()
         
         
     }
@@ -44,7 +46,7 @@ class DetalViewController: UIViewController {
                 case .success(let data):
                     self?.vegetabls = data
                     self?.tableView.reloadData()
-                    print("мы получаем : \(self?.vegetabls)")
+                   // print("мы получаем : \(self?.vegetabls)")
                 case .failure(let error):
                     print(error)
                     
@@ -53,13 +55,25 @@ class DetalViewController: UIViewController {
             
         }
     
-    
-    
-    
+    private func ingrDetailFetch() {
+        
+        let urlString = Rout.baseUrl + Rout.getIngridients(dish[0].id ?? 0).description + Rout.apiKey
+        NetworkService.shared.fetchCharacter(urlString: urlString ) { [weak self] result  in
+            switch result {
+            case .success(let data):
+                self?.dishDetail = [data]
+                self?.tableView.reloadData()
+                //print(self?.dishDetail.count)
+               print("=============================\(self?.dishDetail)")
+            case .failure(let error):
+                print(error)
+                
+            }
+        }
+        
+        
+    }
 }
-
-
-
 
 extension DetalViewController: UITableViewDataSource {
     
@@ -71,6 +85,10 @@ extension DetalViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "VegetableCell", for: indexPath) as? VegetableCell else { fatalError() }
         
+        guard let index = dishDetail.first?.ingredients[indexPath.row] else { return cell }
+        
+        cell.configures(contact: index)
+                        
         cell.configure(contact: vegetabls[indexPath.row])
         cell.selectionStyle = .none
         
