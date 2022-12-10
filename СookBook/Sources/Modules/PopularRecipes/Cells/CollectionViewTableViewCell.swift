@@ -7,7 +7,7 @@
 
 import UIKit
 
-protocol CollectionViewTableViewCellDelegate : class {
+protocol CollectionViewTableViewCellDelegate : AnyObject {
     func categoryTapped(_ cell: CollectionViewTableViewCell)
 }
 

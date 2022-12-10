@@ -26,8 +26,8 @@ struct Metric: Decodable {
 }
 
 struct Amount: Decodable {
-    
+
     let metric: [Metric]?
-    
-    
+
+
 }

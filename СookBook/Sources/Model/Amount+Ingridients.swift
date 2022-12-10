@@ -7,25 +7,25 @@
 
 import Foundation
 
-struct Results: Codable {
+struct Results: Decodable {
     
     let ingredients: [Ingridient]
  
 }
 
-struct Ingridient: Codable {
+struct Ingridient: Decodable {
     
     let amount: Amount
    
 }
 
-struct Amount: Codable  {
-    
-    let metric : Metrics
-    
+struct Amount: Decodable  {
+
+    let metric: Metrics
+
 }
 
-struct Metrics: Codable {
+struct Metrics: Decodable {
     
     let value: Double
     let unit: String
