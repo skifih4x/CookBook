@@ -13,6 +13,7 @@ struct Dish: Decodable {
     let title, image: String?
     let instructions: String?
     let aggregateLikes: Int?
+    let veryPopular: Bool
 //    let extendedIngredients: [Ingridients]?
     
 }

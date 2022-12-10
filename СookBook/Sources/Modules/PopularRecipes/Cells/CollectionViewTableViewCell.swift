@@ -7,7 +7,7 @@
 
 import UIKit
 
-protocol CollectionViewTableViewCellDelegate : class {
+protocol CollectionViewTableViewCellDelegate : AnyObject {
     func categoryTapped(_ cell: CollectionViewTableViewCell)
 }
 
@@ -23,7 +23,7 @@ final class CollectionViewTableViewCell: UITableViewCell {
    
     private lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
-        layout.itemSize = CGSize(width: 140, height: 300)
+        layout.itemSize = CGSize(width: 300, height: 250)
         layout.scrollDirection = .horizontal
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.register(DishCollectionViewCell.self, forCellWithReuseIdentifier: DishCollectionViewCell.identifier)

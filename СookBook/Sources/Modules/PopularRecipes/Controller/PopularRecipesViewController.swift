@@ -11,7 +11,7 @@ final class PopularRecipesViewController: UIViewController, CollectionViewTableV
     func categoryTapped(_ cell: CollectionViewTableViewCell) {
         let vc = DetalViewController()
         vc.dish = CollectionViewTableViewCell.dishId
-        navigationController?.pushViewController(vc, animated: true)
+        navigationController?.present(vc, animated: true)
     }
     
     var dishD : Dish?
@@ -118,11 +118,13 @@ extension PopularRecipesViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        300
+
+
+        270
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        20
+        10
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {

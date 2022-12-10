@@ -44,7 +44,7 @@ class DetalViewController: UIViewController {
                 case .success(let data):
                     self?.vegetabls = data
                     self?.tableView.reloadData()
-                    print("мы получаем : \(self?.vegetabls)")
+                    print("мы получаем : \(self?.vegetabls ?? [Ingridients]())")
                 case .failure(let error):
                     print(error)
                     
