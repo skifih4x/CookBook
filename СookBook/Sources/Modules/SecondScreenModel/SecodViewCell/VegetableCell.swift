@@ -3,6 +3,8 @@
 import UIKit
 
 class VegetableCell: UITableViewCell {
+    
+    
 
     let avatar = UIImageView()
     let nameLabel: UILabel = {
@@ -13,10 +15,12 @@ class VegetableCell: UITableViewCell {
     
     let descriptionLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 10)
+        label.font = UIFont.systemFont(ofSize: 14)
+        label.contentMode = .scaleToFill
         label.textColor = .lightGray
         return label
     }()
+    
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -63,7 +67,7 @@ class VegetableCell: UITableViewCell {
 
             
             descriptionLabel.topAnchor.constraint(equalTo: nameLabel.topAnchor),
-            descriptionLabel.leadingAnchor.constraint(equalTo: avatar.trailingAnchor,  constant: 250),
+            descriptionLabel.leadingAnchor.constraint(equalTo: avatar.trailingAnchor,  constant: 210),
             descriptionLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -8),
             descriptionLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -10)
         ])
@@ -76,9 +80,14 @@ class VegetableCell: UITableViewCell {
     func configure(contact: Ingridients) {
         avatar.kf.setImage(with: contact.image?.asUrlImage)
         nameLabel.text = contact.name?.firstUppercased
-        //descriptionLabel.text = contact.
+        
     }
     
+    func configures(contact: Ingridient) {
+        descriptionLabel.text = "\(contact.amount.metric.value) \(contact.amount.metric.unit)"
+        
+    }
+ 
 }
 
 extension StringProtocol {

@@ -35,12 +35,12 @@ final class PopularRecipesViewController: UIViewController, CollectionViewTableV
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
-        //        title = "Команда 4"
         setupHierarchy()
         setupLayout()
         
-        fetchRecipes { [weak self] model in
+        fetchRecipesTop { [weak self] model in
             self?.popular = model
+            
         }
         
         fetchRecipes { [weak self] model in
@@ -50,8 +50,7 @@ final class PopularRecipesViewController: UIViewController, CollectionViewTableV
         fetchRecipes { [weak self] model in
             self?.topRated = model
         }
-        
-        
+
     }
     
     private func setupHierarchy() {
@@ -79,7 +78,24 @@ final class PopularRecipesViewController: UIViewController, CollectionViewTableV
         }
     }
     
+    func fetchRecipesTop(completion: @escaping ([Dish]) -> ()) {
+        NetworkService.shared.fetchRandomTop() { [weak self] result in
+            switch result {
+            case .success(let data):
+                completion(data)
+                //print(data)
+                self?.recipesTableView.reloadData()
+            case .failure(let error):
+                print(error)
+            }
+        }
+    }
 }
+
+
+
+
+
 
 extension PopularRecipesViewController: UITableViewDelegate {
     
