@@ -139,10 +139,14 @@ extension PopularRecipesViewController: UITableViewDataSource {
         switch section {
         case 0:
             let vc = TrendingViewController()
+            vc.a(m: popular)
+            navigationController?.pushViewController(vc, animated: true)
+        case 1:
+            let vc = TrendingViewController()
+            vc.a(m: trending)
             navigationController?.pushViewController(vc, animated: true)
         default:
-            let vc = PopularViewController()
-            navigationController?.pushViewController(vc, animated: true)
+            ""
         }
 
 

@@ -11,6 +11,7 @@
 		001DA1842934CF8D00286368 /* PopularRecipesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 001DA1832934CF8D00286368 /* PopularRecipesViewController.swift */; };
 		001DA1892934CF8E00286368 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 001DA1882934CF8E00286368 /* Assets.xcassets */; };
 		001DA18C2934CF8E00286368 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 001DA18A2934CF8E00286368 /* LaunchScreen.storyboard */; };
+		0064EDEC29435F5600726DA1 /* TrendingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0064EDEB29435F5600726DA1 /* TrendingCell.swift */; };
 		00B51AE5293E167700BE6F4D /* VegetableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00B51AE4293E167700BE6F4D /* VegetableCell.swift */; };
 		00B51AE7293E167E00BE6F4D /* DetalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00B51AE6293E167E00BE6F4D /* DetalViewController.swift */; };
 		00B51AE9293E168500BE6F4D /* InfoVeget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00B51AE8293E168500BE6F4D /* InfoVeget.swift */; };
@@ -39,6 +40,7 @@
 		001DA1882934CF8E00286368 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		001DA18B2934CF8E00286368 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		001DA18D2934CF8E00286368 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0064EDEB29435F5600726DA1 /* TrendingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingCell.swift; sourceTree = "<group>"; };
 		00B51AE4293E167700BE6F4D /* VegetableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VegetableCell.swift; sourceTree = "<group>"; };
 		00B51AE6293E167E00BE6F4D /* DetalViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetalViewController.swift; sourceTree = "<group>"; };
 		00B51AE8293E168500BE6F4D /* InfoVeget.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoVeget.swift; sourceTree = "<group>"; };
@@ -241,6 +243,7 @@
 			children = (
 				D9A2B8A129368A5100C32807 /* CollectionViewTableViewCell.swift */,
 				D9A2B8B229388B5100C32807 /* DishCollectionViewCell.swift */,
+				0064EDEB29435F5600726DA1 /* TrendingCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -335,6 +338,7 @@
 				84648CFF2937BE35005BD7BD /* AllDishes.swift in Sources */,
 				84648CF32937BDF5005BD7BD /* Route.swift in Sources */,
 				84648CFD2937BE35005BD7BD /* Dish.swift in Sources */,
+				0064EDEC29435F5600726DA1 /* TrendingCell.swift in Sources */,
 				00B51AE7293E167E00BE6F4D /* DetalViewController.swift in Sources */,
 				00B51AE5293E167700BE6F4D /* VegetableCell.swift in Sources */,
 				00B51AF6293E1C9700BE6F4D /* PopularViewController.swift in Sources */,

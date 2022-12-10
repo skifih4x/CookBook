@@ -11,7 +11,7 @@ struct NetworkService {
     
     static let shared = NetworkService()
     private init() {}
-    
+
     func fetchRandomDishes(completion: @escaping(Result<[Dish],Error>) -> Void){
         request(route: .getRandomDish, method: .get, completion: completion)
     }
@@ -84,34 +84,4 @@ struct NetworkService {
         }
         return urlRequest
     }
-    
-//    func updateDisplay(){
-//
-//
-//        NetworkService.shared.fetchRandomDishesIngridients(dishId: "1003464" ) { [weak self] result in
-//            switch result {
-//            case .success(let data):
-//                print("получаю это: \(data)")
-//            case .failure(let error):
-//                print(error)
-//            }
-//        }
-//
-//
-//        NetworkService.shared.fetchRandomDishes() { [weak self] result in
-//            switch result {
-//            case .success(let data):
-//                self?.dish = data
-//                print("Наш массив: \(self?.dish)")
-//                self?.dishName.text = data[0].title
-//                self?.dishImage.kf.setImage(with: data[0].image?.asUrl)
-//                self?.instructionDish.text = data[0].instructions
-//            case .failure(let error):
-//                print(error)
-//            }
-//        }
-//    }
-    
-    
-    
 }

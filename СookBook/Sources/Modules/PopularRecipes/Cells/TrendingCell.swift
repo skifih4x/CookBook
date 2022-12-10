@@ -1,16 +1,15 @@
 //
-//  DishCollectionViewCell.swift
+//  TrendingCell.swift
 //  СookBook
 //
-//  Created by Артем Галай on 1.12.22.
+//  Created by Артем Орлов on 09.12.2022.
 //
 
 import UIKit
-import Kingfisher
 
-class DishCollectionViewCell: UICollectionViewCell {
+class TrendingCell: UITableViewCell {
 
-    static let identifier = "DishCollectionViewCell"
+    static let identifier = "TrendingCell"
 
     private let dishImageView: UIImageView = {
         let imageView = UIImageView()
@@ -26,7 +25,7 @@ class DishCollectionViewCell: UICollectionViewCell {
         label.textColor = .black
         label.numberOfLines = 3
         label.textAlignment = .center
-        label.font = .systemFont(ofSize: 12, weight: .bold)
+        label.font = .systemFont(ofSize: 16, weight: .bold)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -35,14 +34,17 @@ class DishCollectionViewCell: UICollectionViewCell {
         let label = UILabel()
         label.textColor = .yellow
         label.textAlignment = .right
-        label.font = .systemFont(ofSize: 12, weight: .bold)
+        label.font = .systemFont(ofSize: 16, weight: .bold)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
+    
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        addSubview(dishImageView)
+        addSubview(titleLabel)
+        addSubview(likesLabel)
 
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        setupHierarchy()
         setupLayout()
     }
 
@@ -50,18 +52,11 @@ class DishCollectionViewCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
 
-    private func setupHierarchy() {
-        addSubview(dishImageView)
-        addSubview(titleLabel)
-        addSubview(likesLabel)
-
-    }
-
     private func setupLayout() {
         NSLayoutConstraint.activate([
-            dishImageView.topAnchor.constraint(equalTo: topAnchor, constant: 12),
-            dishImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
-            dishImageView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: 16),
+            dishImageView.topAnchor.constraint(equalTo: topAnchor),
+            dishImageView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            dishImageView.trailingAnchor.constraint(equalTo: trailingAnchor),
             dishImageView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -60),
 
             titleLabel.topAnchor.constraint(equalTo: dishImageView.bottomAnchor),
@@ -76,9 +71,10 @@ class DishCollectionViewCell: UICollectionViewCell {
         ])
     }
 
-    func configure(with model: Dish) {
+    func setup(model: Dish) {
         dishImageView.kf.setImage(with: model.image?.asUrl)
         titleLabel.text = model.title
         likesLabel.text = String(describing: model.aggregateLikes ?? 0)
+    
     }
 }

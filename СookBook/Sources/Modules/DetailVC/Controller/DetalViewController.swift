@@ -12,7 +12,7 @@ class DetalViewController: UIViewController {
     let countIngrLabel = UILabel()
     var vegetabls = Sourse.makeContacts()
     var tableView: UITableView = .init()
-    let stackView   = UIStackView()
+    let stackView = UIStackView()
 
 
     override func viewDidLoad() {
@@ -25,8 +25,7 @@ class DetalViewController: UIViewController {
         
         
         
-        tableView.register(VegetableCell.self
-                           , forCellReuseIdentifier: "VegetableCell")
+        tableView.register(VegetableCell.self, forCellReuseIdentifier: "VegetableCell")
         tableView.dataSource = self
         tableView.delegate = self
         
@@ -103,13 +102,13 @@ extension DetalViewController {
 
 extension DetalViewController {
     func setup () {
-    setuplabelNameDish()
-    setupPhotoDish()
-    setupLikeLabel()
-    setupdescriptionDish()
-    setupHowMakeLabel()
-      // setupcountIngrLabel()
-}
+        setuplabelNameDish()
+        setupPhotoDish()
+        setupLikeLabel()
+        setupdescriptionDish()
+        setupHowMakeLabel()
+        // setupcountIngrLabel()
+    }
 }
 
 
@@ -174,7 +173,7 @@ extension DetalViewController {
         labelNameDish.textColor = .black
         labelNameDish.numberOfLines = 0
         labelNameDish.text = "How to make ... авпвап вапвывпа вап"
-//        labelNameDish.font = labelNameDish.font.withSize(22)
+        //        labelNameDish.font = labelNameDish.font.withSize(22)
         labelNameDish.font = UIFont(name:"HelveticaNeue-Bold", size: 22.0)
         self.view.addSubview(labelNameDish)
     }

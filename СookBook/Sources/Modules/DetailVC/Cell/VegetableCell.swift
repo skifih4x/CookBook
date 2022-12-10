@@ -5,6 +5,7 @@ import UIKit
 class VegetableCell: UITableViewCell {
 
     let avatar = UIImageView()
+
     let nameLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 14)
@@ -36,6 +37,7 @@ class VegetableCell: UITableViewCell {
         }
         
         NSLayoutConstraint.activate([
+            
             avatar.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 16),
             avatar.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
             avatar.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -10),
