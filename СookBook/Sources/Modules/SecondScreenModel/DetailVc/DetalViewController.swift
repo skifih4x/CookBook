@@ -2,7 +2,8 @@
 import UIKit
 
 class DetalViewController: UIViewController {
-
+    
+    
     var labelNameDish = UILabel()
     var photoDish = UIImageView()
     var image = UIImage(named: "vagyu.jpg")
@@ -10,10 +11,12 @@ class DetalViewController: UIViewController {
     let descriptionDish = UILabel()
     let howMakeLabel = UILabel()
     let countIngrLabel = UILabel()
-    var vegetabls = Sourse.makeContacts()
+    var vegetabls = [Ingridients]()
+    var dish = [Dish]()
+    
     var tableView: UITableView = .init()
-    let stackView = UIStackView()
 
+    let stackView = UIStackView()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,14 +26,36 @@ class DetalViewController: UIViewController {
         
         self.view.backgroundColor = .white
         
-        
+
         
         tableView.register(VegetableCell.self, forCellReuseIdentifier: "VegetableCell")
+
         tableView.dataSource = self
         tableView.delegate = self
+        tableView.separatorStyle = .none
+        ingridientsFatch()
+        
         
     }
+    private func ingridientsFatch() {
+
+        NetworkService.shared.fetchRandomDishesIngridients(dishId: dish[0].id ?? 0) { [weak self] result in
+                switch result {
+                case .success(let data):
+                    self?.vegetabls = data
+                    self?.tableView.reloadData()
+                    print("мы получаем : \(self?.vegetabls ?? [Ingridients]())")
+                case .failure(let error):
+                    print(error)
+
+                }
+            }
+
+        }
+
 }
+
+
 
 extension DetalViewController: UITableViewDataSource {
 
@@ -41,7 +66,10 @@ extension DetalViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "VegetableCell", for: indexPath) as? VegetableCell else { fatalError() }
 
-        cell.configure(contact: vegetabls[indexPath.row] )
+        
+        cell.configure(contact: vegetabls[indexPath.row])
+        cell.selectionStyle = .none
+        
 
         return cell
     }
@@ -58,10 +86,9 @@ extension DetalViewController: UITableViewDataSource {
         label.textColor = .black
         headerView.addSubview(label)
 
-
         let CountLabel = UILabel()
         CountLabel.frame = CGRect.init(x:  3 * headerView.frame.width/4, y: 5, width: headerView.frame.width, height: headerView.frame.height)
-        CountLabel.text = "12 items"
+        CountLabel.text = "\(vegetabls.count) items"
         CountLabel.font = .systemFont(ofSize: 15)
         CountLabel.textColor = .black
         CountLabel.alpha = 0.8
@@ -71,7 +98,14 @@ extension DetalViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+
         return 50
+
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 70
+
     }
     
 }
@@ -96,6 +130,9 @@ extension DetalViewController {
         
         
     }
+    
+    
+    
 }
 
 
@@ -116,7 +153,7 @@ extension DetalViewController {
     func setupHowMakeLabel() {
         howMakeLabel.textColor = .black
         howMakeLabel.numberOfLines = 0
-        howMakeLabel.text = "1234123412 grhkfdg[khd'fg fgjh [d[fgваыхзпшdgfsgdsfgdsfgdfgdfgdfgfgfdghdfghfdghfdghdfghdfghfdghfdghfdghfdghfghроывашоп оахп выаопыв оп"
+        howMakeLabel.text = "\(dish[0].instructions ?? "")"
         howMakeLabel.font = howMakeLabel.font.withSize(15)
         self.view.addSubview(howMakeLabel)
     }
@@ -125,7 +162,7 @@ extension DetalViewController {
 
 extension DetalViewController {
     func setupcountIngrLabel() {
-
+        
         countIngrLabel.textColor = .black
         countIngrLabel.numberOfLines = 0
         countIngrLabel.text = "23 rf"
@@ -137,13 +174,13 @@ extension DetalViewController {
 extension DetalViewController {
     
     func setupdescriptionDish() {
-
+        
         descriptionDish.textColor = .black
         descriptionDish.numberOfLines = 0
-        descriptionDish.text = "Здесь будет описание блюда idfuhgpidfhghadfgh[adf[ghau[dfhgadhfgadfgh[afh[gadfoh[h  jdfg;dgjsdfgsdfhjghdsfhg;dshfjhsdjgfghdfghfdghfdghfghfdghh;sdjfhg;sdfh;gsdhf;gdsh;fgj"
+        descriptionDish.text = ""
         descriptionDish.font = descriptionDish.font.withSize(15)
         self.view.addSubview(descriptionDish)
-
+        
     }
     
     
@@ -152,11 +189,12 @@ extension DetalViewController {
 extension DetalViewController {
     
     func setupLikeLabel() {
-
+        
+        
         likeLabel.textColor = .black
         likeLabel.numberOfLines = 0
-        likeLabel.text = "❤️ 34 "
-        likeLabel.font = likeLabel.font.withSize(12)
+        likeLabel.text = "\(dish[0].aggregateLikes ?? 0) ❤️"
+        likeLabel.font = likeLabel.font.withSize(18)
         self.view.addSubview(likeLabel)
     }
     
@@ -169,10 +207,12 @@ extension DetalViewController {
 extension DetalViewController {
     
     func setuplabelNameDish() {
-
+        
         labelNameDish.textColor = .black
         labelNameDish.numberOfLines = 0
-        labelNameDish.text = "How to make ... авпвап вапвывпа вап"
+
+        labelNameDish.text = "How to make a \(dish[0].title ?? "") "
+
         //        labelNameDish.font = labelNameDish.font.withSize(22)
         labelNameDish.font = UIFont(name:"HelveticaNeue-Bold", size: 22.0)
         self.view.addSubview(labelNameDish)
@@ -184,9 +224,9 @@ extension DetalViewController {
 
 extension DetalViewController {
     func setupPhotoDish() {
-
         
-        photoDish.image = image
+        
+        photoDish.kf.setImage(with: dish[0].image?.asUrl)
         photoDish.layer.cornerRadius = 23
         photoDish.clipsToBounds = true
         photoDish.heightAnchor.constraint(equalToConstant: 200.0).isActive = true
