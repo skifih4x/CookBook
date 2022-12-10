@@ -9,6 +9,7 @@ import UIKit
 
 final class PopularRecipesViewController: UIViewController {
 
+    
     let sectionTitles = ["Trending now🔥", "Popular"]
 
     var popular = [Dish]()

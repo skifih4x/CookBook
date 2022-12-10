@@ -77,6 +77,7 @@ struct NetworkService {
     
     }
     
+    
     private func createRequest(route: Rout, method: Method, params: [String: Any]? = nil) -> URLRequest? {
         let urlString = Rout.baseUrl + route.description + Rout.apiKey
         guard let url = urlString.asUrl else { return nil }

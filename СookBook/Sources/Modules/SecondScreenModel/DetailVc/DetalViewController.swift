@@ -32,14 +32,9 @@ class DetalViewController: UIViewController {
         tableView.separatorStyle = .none
         ingridientsFatch()
     }
-}
 
-extension DetalViewController: UITableViewDataSource {
-
-    
-    
     private func ingridientsFatch() {
-        
+
         NetworkService.shared.fetchRandomDishesIngridients(dishId: dish[0].id ?? 0) { [weak self] result in
                 switch result {
                 case .success(let data):
@@ -48,19 +43,13 @@ extension DetalViewController: UITableViewDataSource {
                     print("мы получаем : \(self?.vegetabls)")
                 case .failure(let error):
                     print(error)
-                    
+
                 }
             }
-            
+
         }
     
-    
-    
-    
 }
-
-
-
 
 extension DetalViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

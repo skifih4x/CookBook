@@ -68,6 +68,7 @@ class TrendingViewController: UIViewController, UITableViewDelegate, UITableView
 
         navigationController?.navigationBar.transform = .init(translationX: 0, y: min(0, -offset))
     }
+    
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let vc = DetalViewController()

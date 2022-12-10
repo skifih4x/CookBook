@@ -22,7 +22,8 @@ struct Metric: Decodable {
 //    //let amount: [Amount]?
     let value: Int?
     let unit: String?
-    
+
+
 }
 
 struct Amount: Decodable {
