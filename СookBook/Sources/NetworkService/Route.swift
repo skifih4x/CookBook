@@ -11,7 +11,7 @@ enum Rout {
     
     static let baseUrl = "https://api.spoonacular.com"
     static let apiKey = "apiKey=602e4ffc344843c4a5af8b63fefa097b"
-    
+
     case getRandomDish
     case getIngridients(Int)
     case getRandomTop
