@@ -16,7 +16,6 @@
 		00B51AE7293E167E00BE6F4D /* DetalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00B51AE6293E167E00BE6F4D /* DetalViewController.swift */; };
 		00B51AE9293E168500BE6F4D /* InfoVeget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00B51AE8293E168500BE6F4D /* InfoVeget.swift */; };
 		00B51AF4293E1C8F00BE6F4D /* TrendingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00B51AF3293E1C8F00BE6F4D /* TrendingViewController.swift */; };
-		00B51AF6293E1C9700BE6F4D /* PopularViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00B51AF5293E1C9700BE6F4D /* PopularViewController.swift */; };
 		84648CF12937BDF5005BD7BD /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84648CEC2937BDF5005BD7BD /* NetworkService.swift */; };
 		84648CF22937BDF5005BD7BD /* ApiResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84648CED2937BDF5005BD7BD /* ApiResponse.swift */; };
 		84648CF32937BDF5005BD7BD /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84648CEE2937BDF5005BD7BD /* Route.swift */; };
@@ -45,7 +44,6 @@
 		00B51AE6293E167E00BE6F4D /* DetalViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetalViewController.swift; sourceTree = "<group>"; };
 		00B51AE8293E168500BE6F4D /* InfoVeget.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoVeget.swift; sourceTree = "<group>"; };
 		00B51AF3293E1C8F00BE6F4D /* TrendingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingViewController.swift; sourceTree = "<group>"; };
-		00B51AF5293E1C9700BE6F4D /* PopularViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularViewController.swift; sourceTree = "<group>"; };
 		84648CEC2937BDF5005BD7BD /* NetworkService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		84648CED2937BDF5005BD7BD /* ApiResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiResponse.swift; sourceTree = "<group>"; };
 		84648CEE2937BDF5005BD7BD /* Route.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Route.swift; sourceTree = "<group>"; };
@@ -233,7 +231,6 @@
 			children = (
 				001DA1832934CF8D00286368 /* PopularRecipesViewController.swift */,
 				00B51AF3293E1C8F00BE6F4D /* TrendingViewController.swift */,
-				00B51AF5293E1C9700BE6F4D /* PopularViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -341,7 +338,6 @@
 				0064EDEC29435F5600726DA1 /* TrendingCell.swift in Sources */,
 				00B51AE7293E167E00BE6F4D /* DetalViewController.swift in Sources */,
 				00B51AE5293E167700BE6F4D /* VegetableCell.swift in Sources */,
-				00B51AF6293E1C9700BE6F4D /* PopularViewController.swift in Sources */,
 				00B51AE9293E168500BE6F4D /* InfoVeget.swift in Sources */,
 				84648CF12937BDF5005BD7BD /* NetworkService.swift in Sources */,
 				001DA1802934CF8D00286368 /* AppDelegate.swift in Sources */,
