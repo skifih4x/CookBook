@@ -5,7 +5,7 @@
 //  Created by Админ on 29.11.2022.
 //
 
-import Foundationё
+import Foundation
 
 
 struct ApiResponse<T:Decodable>: Decodable {
