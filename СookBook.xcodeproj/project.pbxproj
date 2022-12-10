@@ -10,17 +10,8 @@
 		001DA1802934CF8D00286368 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 001DA17F2934CF8D00286368 /* AppDelegate.swift */; };
 		001DA1892934CF8E00286368 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 001DA1882934CF8E00286368 /* Assets.xcassets */; };
 		001DA18C2934CF8E00286368 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 001DA18A2934CF8E00286368 /* LaunchScreen.storyboard */; };
-
+		00391E1E2944E4C5007C0F28 /* TrendingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00391E1D2944E4C5007C0F28 /* TrendingViewController.swift */; };
 		0064EDEC29435F5600726DA1 /* TrendingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0064EDEB29435F5600726DA1 /* TrendingCell.swift */; };
-		00B51AE5293E167700BE6F4D /* VegetableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00B51AE4293E167700BE6F4D /* VegetableCell.swift */; };
-		00B51AE7293E167E00BE6F4D /* DetalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00B51AE6293E167E00BE6F4D /* DetalViewController.swift */; };
-		00B51AE9293E168500BE6F4D /* InfoVeget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00B51AE8293E168500BE6F4D /* InfoVeget.swift */; };
-		00B51AF4293E1C8F00BE6F4D /* TrendingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00B51AF3293E1C8F00BE6F4D /* TrendingViewController.swift */; };
-		00B51AF6293E1C9700BE6F4D /* PopularViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00B51AF5293E1C9700BE6F4D /* PopularViewController.swift */; };
-		84648CF12937BDF5005BD7BD /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84648CEC2937BDF5005BD7BD /* NetworkService.swift */; };
-		84648CF22937BDF5005BD7BD /* ApiResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84648CED2937BDF5005BD7BD /* ApiResponse.swift */; };
-		84648CF32937BDF5005BD7BD /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84648CEE2937BDF5005BD7BD /* Route.swift */; };
-
 		84648CF42937BDF5005BD7BD /* AppError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84648CEF2937BDF5005BD7BD /* AppError.swift */; };
 		84648CF52937BDF5005BD7BD /* Method.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84648CF02937BDF5005BD7BD /* Method.swift */; };
 		84648CFD2937BE35005BD7BD /* Dish.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84648CFA2937BE35005BD7BD /* Dish.swift */; };
@@ -49,17 +40,8 @@
 		001DA1882934CF8E00286368 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		001DA18B2934CF8E00286368 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		001DA18D2934CF8E00286368 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-
+		00391E1D2944E4C5007C0F28 /* TrendingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TrendingViewController.swift; path = "СookBook/Sources/Modules/PopularRecipes/Controllers/TrendingViewController.swift"; sourceTree = SOURCE_ROOT; };
 		0064EDEB29435F5600726DA1 /* TrendingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingCell.swift; sourceTree = "<group>"; };
-		00B51AE4293E167700BE6F4D /* VegetableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VegetableCell.swift; sourceTree = "<group>"; };
-		00B51AE6293E167E00BE6F4D /* DetalViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetalViewController.swift; sourceTree = "<group>"; };
-		00B51AE8293E168500BE6F4D /* InfoVeget.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoVeget.swift; sourceTree = "<group>"; };
-		00B51AF3293E1C8F00BE6F4D /* TrendingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingViewController.swift; sourceTree = "<group>"; };
-		00B51AF5293E1C9700BE6F4D /* PopularViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularViewController.swift; sourceTree = "<group>"; };
-		84648CEC2937BDF5005BD7BD /* NetworkService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
-		84648CED2937BDF5005BD7BD /* ApiResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiResponse.swift; sourceTree = "<group>"; };
-		84648CEE2937BDF5005BD7BD /* Route.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Route.swift; sourceTree = "<group>"; };
-
 		84648CEF2937BDF5005BD7BD /* AppError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppError.swift; sourceTree = "<group>"; };
 		84648CF02937BDF5005BD7BD /* Method.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Method.swift; sourceTree = "<group>"; };
 		84648CFA2937BE35005BD7BD /* Dish.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Dish.swift; sourceTree = "<group>"; };
@@ -152,6 +134,7 @@
 			isa = PBXGroup;
 			children = (
 				84AA8801293F79A7009B4464 /* PopularRecipesViewController.swift */,
+				00391E1D2944E4C5007C0F28 /* TrendingViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -258,18 +241,6 @@
 			path = SavedRecipes;
 			sourceTree = "<group>";
 		};
-
-		D9A2B89F29368A0000C32807 /* Controllers */ = {
-			isa = PBXGroup;
-			children = (
-				001DA1832934CF8D00286368 /* PopularRecipesViewController.swift */,
-				00B51AF3293E1C8F00BE6F4D /* TrendingViewController.swift */,
-				00B51AF5293E1C9700BE6F4D /* PopularViewController.swift */,
-			);
-			path = Controllers;
-			sourceTree = "<group>";
-		};
-
 		D9A2B8A029368A0D00C32807 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
@@ -389,28 +360,18 @@
 				84648CF42937BDF5005BD7BD /* AppError.swift in Sources */,
 				84AA880A293F8252009B4464 /* VegetableCell.swift in Sources */,
 				D9A2B84C29354ECF00C32807 /* CookTabBarController.swift in Sources */,
-
-				00B51AF4293E1C8F00BE6F4D /* TrendingViewController.swift in Sources */,
-
 				84AA8802293F79A7009B4464 /* PopularRecipesViewController.swift in Sources */,
 				D9F5E0D02942882B004455AD /* ApiResponse.swift in Sources */,
-
 				D9A2B8B329388B5100C32807 /* DishCollectionViewCell.swift in Sources */,
 				84648CFF2937BE35005BD7BD /* AllDishes.swift in Sources */,
+				00391E1E2944E4C5007C0F28 /* TrendingViewController.swift in Sources */,
 				84AA8808293F822A009B4464 /* DetalViewController.swift in Sources */,
 				D9F5E0CC29428803004455AD /* Ingredientas.swift in Sources */,
 				D9F5E0D529436878004455AD /* StartViewController.swift in Sources */,
 				D9F5E0D229428836004455AD /* NetworkService.swift in Sources */,
 				84AA880C293F8259009B4464 /* InfoVeget.swift in Sources */,
 				84648CFD2937BE35005BD7BD /* Dish.swift in Sources */,
-
 				0064EDEC29435F5600726DA1 /* TrendingCell.swift in Sources */,
-				00B51AE7293E167E00BE6F4D /* DetalViewController.swift in Sources */,
-				00B51AE5293E167700BE6F4D /* VegetableCell.swift in Sources */,
-				00B51AF6293E1C9700BE6F4D /* PopularViewController.swift in Sources */,
-				00B51AE9293E168500BE6F4D /* InfoVeget.swift in Sources */,
-				84648CF12937BDF5005BD7BD /* NetworkService.swift in Sources */,
-
 				001DA1802934CF8D00286368 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

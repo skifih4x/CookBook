@@ -60,7 +60,8 @@ struct NetworkService {
             } else {
                 
                 let decodedData = response.ingredients
-                completion(.success(decodedData!))
+                guard let decoded = decodedData else { return }
+                completion(.success(decoded))
 //                completion(.failure(AppError.unknownError))
                 }
 //            if let newData = response.ingredients {

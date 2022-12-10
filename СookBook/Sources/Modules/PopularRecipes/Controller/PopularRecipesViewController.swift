@@ -14,9 +14,9 @@ final class PopularRecipesViewController: UIViewController, CollectionViewTableV
         navigationController?.present(vc, animated: true)
     }
     
-    var dishD : Dish?
+//    var dishD : Dish?
     
-    let sectionTitles: [String] = ["Popular", "Trending", "Top rated"]
+    let sectionTitles: [String] = ["Trending now🔥", "Popular", "Top Rated"]
     
     var popular = [Dish]()
     var trending = [Dish]()
@@ -28,13 +28,14 @@ final class PopularRecipesViewController: UIViewController, CollectionViewTableV
                            forCellReuseIdentifier: CollectionViewTableViewCell.identifier)
         tableView.delegate = self
         tableView.dataSource = self
+        tableView.separatorStyle = .none
         tableView.translatesAutoresizingMaskIntoConstraints = false
         return tableView
     }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .systemBackground
+        recipesTableView.backgroundColor = .white
         setupHierarchy()
         setupLayout()
         
@@ -99,10 +100,10 @@ extension PopularRecipesViewController: UITableViewDataSource {
         switch indexPath.section {
         case 0:
             cell.configure(with: popular)
-        case 1:
-            cell.configure(with: trending)
-        case 2:
-            cell.configure(with: topRated)
+//        case 1:
+//            cell.configure(with: trending)
+//        case 2:
+//            cell.configure(with: topRated)
         default:
             return UITableViewCell()
         }
@@ -110,15 +111,53 @@ extension PopularRecipesViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        270
+        250
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        10
+        16
     }
     
-    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        sectionTitles[section]
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+
+        let header = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: 100))
+        header.backgroundColor = .white
+
+        let label = UILabel(frame: CGRect(x: 10, y: -45, width: 160, height: header.frame.size.height))
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.text = sectionTitles[section]
+        label.font = .systemFont(ofSize: 20, weight: .bold)
+
+        let button = UIButton(frame: CGRect(x: 250, y: -45, width: 160, height: header.frame.size.height))
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setTitle("See all →", for: .normal)
+        button.setTitleColor(.red, for: .normal)
+        button.addTarget(self, action: #selector(buttonAction), for: .touchUpInside)
+        button.tag = section
+
+        header.addSubview(label)
+        header.addSubview(button)
+
+        return header
+    }
+
+    @objc func buttonAction(button: UIButton) {
+        let section = button.tag
+
+        switch section {
+        case 0:
+            let vc = TrendingViewController()
+            vc.a(m: popular)
+            navigationController?.pushViewController(vc, animated: true)
+        case 1:
+            let vc = TrendingViewController()
+            vc.a(m: trending)
+            navigationController?.pushViewController(vc, animated: true)
+        default:
+            ""
+        }
+
+
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {

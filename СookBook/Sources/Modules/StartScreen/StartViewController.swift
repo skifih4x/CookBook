@@ -30,6 +30,7 @@ class StartViewController: UIViewController {
 
         setupHierarchy()
         setupLayout()
+        navigationController?.isNavigationBarHidden = true
     }
 
     private func setupHierarchy() {

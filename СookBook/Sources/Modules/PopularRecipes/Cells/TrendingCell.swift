@@ -30,20 +30,54 @@ class TrendingCell: UITableViewCell {
         return label
     }()
 
+    private let viewForLikes: UIView = {
+        let view = UIView()
+        view.backgroundColor = .white
+        view.alpha = 0.7
+        view.layer.cornerRadius = 10
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+
+    private let likeImage: UIImageView = {
+        let imageView = UIImageView()
+        let image = UIImage(systemName: "heart.fill")
+        imageView.image = image
+        imageView.tintColor = .red
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        return imageView
+    }()
+
     private let likesLabel: UILabel = {
         let label = UILabel()
-        label.textColor = .yellow
-        label.textAlignment = .right
-        label.font = .systemFont(ofSize: 16, weight: .bold)
+        label.textAlignment = .center
+        label.textColor = .black
+        label.font = .systemFont(ofSize: 14, weight: .bold)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
+
+    private lazy var fovouriteMarkButton: UIButton = {
+        let button = UIButton()
+        button.setImage(UIImage(systemName: "bookmark"), for: .normal)
+        button.imageView?.layer.transform = CATransform3DMakeScale(1.4, 1.4, 1.4)
+        button.tintColor = .black
+        button.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
+
+
+    
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         addSubview(dishImageView)
         addSubview(titleLabel)
-        addSubview(likesLabel)
+        addSubview(viewForLikes)
+        addSubview(fovouriteMarkButton)
+        viewForLikes.addSubview(likeImage)
+        viewForLikes.addSubview(likesLabel)
 
         setupLayout()
     }
@@ -54,9 +88,10 @@ class TrendingCell: UITableViewCell {
 
     private func setupLayout() {
         NSLayoutConstraint.activate([
-            dishImageView.topAnchor.constraint(equalTo: topAnchor),
-            dishImageView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            dishImageView.trailingAnchor.constraint(equalTo: trailingAnchor),
+
+            dishImageView.topAnchor.constraint(equalTo: topAnchor, constant: 6),
+            dishImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 6),
+            dishImageView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -6),
             dishImageView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -60),
 
             titleLabel.topAnchor.constraint(equalTo: dishImageView.bottomAnchor),
@@ -64,11 +99,27 @@ class TrendingCell: UITableViewCell {
             titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
             titleLabel.bottomAnchor.constraint(equalTo: bottomAnchor),
 
-            likesLabel.topAnchor.constraint(equalTo: topAnchor, constant: 10),
-            likesLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10),
-            likesLabel.heightAnchor.constraint(equalToConstant: 20),
-            likesLabel.widthAnchor.constraint(equalToConstant: 40)
+            fovouriteMarkButton.topAnchor.constraint(equalTo: topAnchor, constant: 10),
+            fovouriteMarkButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10),
+
+            viewForLikes.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -70),
+            viewForLikes.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10),
+            viewForLikes.heightAnchor.constraint(equalToConstant: 22),
+            viewForLikes.widthAnchor.constraint(equalToConstant: 62),
+
+            likeImage.centerYAnchor.constraint(equalTo: viewForLikes.centerYAnchor),
+            likeImage.leadingAnchor.constraint(equalTo: viewForLikes.leadingAnchor, constant: 2),
+            likeImage.heightAnchor.constraint(equalToConstant: 22),
+            likeImage.widthAnchor.constraint(equalToConstant: 22),
+
+            likesLabel.centerYAnchor.constraint(equalTo: viewForLikes.centerYAnchor),
+            likesLabel.leadingAnchor.constraint(equalTo: likeImage.trailingAnchor),
+            likesLabel.trailingAnchor.constraint(equalTo: viewForLikes.trailingAnchor, constant: -2)
         ])
+    }
+
+    @objc func buttonTapped() {
+        fovouriteMarkButton.setImage(UIImage(systemName: "bookmark.fill"), for: .normal)
     }
 
     func setup(model: Dish) {

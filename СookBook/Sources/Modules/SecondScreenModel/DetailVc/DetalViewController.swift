@@ -36,6 +36,23 @@ class DetalViewController: UIViewController {
         ingridientsFatch()
         
         
+        let button = UIButton(type: .custom)
+
+        button.setImage(UIImage(systemName: "arrow.backward"), for: .normal)
+        button.imageView?.tintColor = .black
+        button.addTarget(self, action: #selector(callMethod), for: .touchUpInside)
+        button.frame = CGRect(x: 0, y: 0, width: 100, height: 100)
+        button.sizeToFit()
+
+
+        let barButton = UIBarButtonItem(customView: button)
+        navigationItem.leftBarButtonItem = barButton
+        navigationController?.hidesBarsOnTap = false
+        navigationItem.hidesSearchBarWhenScrolling = false
+    }
+
+    @objc func callMethod(sender: UIBarButtonItem) {
+        self.navigationController?.popViewController(animated:true)
     }
     private func ingridientsFatch() {
 

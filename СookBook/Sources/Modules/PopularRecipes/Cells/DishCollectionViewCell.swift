@@ -16,7 +16,7 @@ class DishCollectionViewCell: UICollectionViewCell {
         let imageView = UIImageView()
         imageView.layer.cornerRadius = 10
         imageView.clipsToBounds = true
-        imageView.contentMode = .scaleAspectFill
+        imageView.contentMode = .scaleToFill
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
@@ -92,7 +92,7 @@ class DishCollectionViewCell: UICollectionViewCell {
 
             dishImageView.topAnchor.constraint(equalTo: topAnchor, constant: 12),
             dishImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
-            dishImageView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: 16),
+            dishImageView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
             dishImageView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -60),
 
             titleLabel.topAnchor.constraint(equalTo: dishImageView.bottomAnchor),
@@ -100,8 +100,8 @@ class DishCollectionViewCell: UICollectionViewCell {
             titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
             titleLabel.bottomAnchor.constraint(equalTo: bottomAnchor),
             
-            fovouriteMarkButton.topAnchor.constraint(equalTo: topAnchor, constant: 10),
-            fovouriteMarkButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10),
+            fovouriteMarkButton.topAnchor.constraint(equalTo: topAnchor, constant: 25),
+            fovouriteMarkButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -30),
             
             viewForLikes.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -70),
             viewForLikes.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10),
