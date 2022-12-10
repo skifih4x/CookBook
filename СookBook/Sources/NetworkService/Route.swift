@@ -16,6 +16,8 @@ enum Rout {
     
     case getRandomDish
     case getIngridients(Int)
+    case getRandomVegan
+    case getRandomDessert
     
     var description: String {
         switch self {
@@ -24,7 +26,12 @@ enum Rout {
             return "/recipes/random?number=10&tags&"
         case .getIngridients(let dishId):
             return "/recipes/\(dishId)/ingredientWidget.json?"
+        case .getRandomVegan:
+            return "/recipes/random?number=10&tags=vegan&"
+        case .getRandomDessert:
+            return "/recipes/random?number=10&tags=dessert&"
         }
+
         
     }
 }

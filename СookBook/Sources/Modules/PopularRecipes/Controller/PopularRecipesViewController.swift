@@ -16,12 +16,12 @@ final class PopularRecipesViewController: UIViewController, CollectionViewTableV
     
 //    var dishD : Dish?
     
-    let sectionTitles: [String] = ["Trending now🔥", "Popular", "Top Rated"]
+    let sectionTitles: [String] = ["Trending now🔥", "Popular Vegan", "Popular Dessert"]
     
-    var popular = [Dish]()
     var trending = [Dish]()
-    var topRated = [Dish]()
-    
+    var popularVegan = [Dish]()
+    var popularDessert = [Dish]()
+
     private lazy var recipesTableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .grouped)
         tableView.register(CollectionViewTableViewCell.self,
@@ -42,15 +42,15 @@ final class PopularRecipesViewController: UIViewController, CollectionViewTableV
         setupLayout()
         
         fetchRecipes { [weak self] model in
-            self?.popular = model
+            self?.popularVegan = model
         }
         
-        fetchRecipes { [weak self] model in
+        fetchRecipesVegan { [weak self] model in
             self?.trending = model
         }
         
-        fetchRecipes { [weak self] model in
-            self?.topRated = model
+        fetchRecipesDessert { [weak self] model in
+            self?.popularDessert = model
         }
     }
     
@@ -69,6 +69,30 @@ final class PopularRecipesViewController: UIViewController, CollectionViewTableV
     
     func fetchRecipes(completion: @escaping ([Dish]) -> ()) {
         NetworkService.shared.fetchRandomDishes() { [weak self] result in
+            switch result {
+            case .success(let data):
+                completion(data)
+                self?.recipesTableView.reloadData()
+            case .failure(let error):
+                print(error)
+            }
+        }
+    }
+
+    func fetchRecipesVegan(completion: @escaping ([Dish]) -> ()) {
+        NetworkService.shared.fetchRandomVegan() { [weak self] result in
+            switch result {
+            case .success(let data):
+                completion(data)
+                self?.recipesTableView.reloadData()
+            case .failure(let error):
+                print(error)
+            }
+        }
+    }
+
+    func fetchRecipesDessert(completion: @escaping ([Dish]) -> ()) {
+        NetworkService.shared.fetchRandomVegan() { [weak self] result in
             switch result {
             case .success(let data):
                 completion(data)
@@ -101,11 +125,11 @@ extension PopularRecipesViewController: UITableViewDataSource {
         
         switch indexPath.section {
         case 0:
-            cell.configure(with: popular)
-//        case 1:
-//            cell.configure(with: trending)
-//        case 2:
-//            cell.configure(with: topRated)
+            cell.configure(with: popularVegan)
+        case 1:
+            cell.configure(with: trending)
+        case 2:
+            cell.configure(with: popularDessert)
         default:
             return UITableViewCell()
         }
@@ -149,7 +173,7 @@ extension PopularRecipesViewController: UITableViewDataSource {
         switch section {
         case 0:
             let vc = TrendingViewController()
-            vc.a(m: popular)
+            vc.a(m: popularVegan)
             navigationController?.pushViewController(vc, animated: true)
         case 1:
             let vc = TrendingViewController()

@@ -15,6 +15,14 @@ struct NetworkService {
     func fetchRandomDishes(completion: @escaping(Result<[Dish],Error>) -> Void){
         request(route: .getRandomDish, method: .get, completion: completion)
     }
+
+    func fetchRandomVegan(completion: @escaping(Result<[Dish],Error>) -> Void){
+        request(route: .getRandomVegan, method: .get, completion: completion)
+    }
+
+    func fetchRandomDessert(completion: @escaping(Result<[Dish],Error>) -> Void){
+        request(route: .getRandomDessert, method: .get, completion: completion)
+    }
     
     func fetchRandomDishesIngridients(dishId: Int,completion: @escaping(Result<[Ingridients],Error>) -> Void){
         request(route: .getIngridients(dishId), method: .get, completion: completion)

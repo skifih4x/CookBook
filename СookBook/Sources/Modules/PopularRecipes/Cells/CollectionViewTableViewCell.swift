@@ -25,6 +25,7 @@ final class CollectionViewTableViewCell: UITableViewCell {
         layout.scrollDirection = .horizontal
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.register(DishCollectionViewCell.self, forCellWithReuseIdentifier: DishCollectionViewCell.identifier)
+        collectionView.coordinateSpace
         collectionView.backgroundColor = .systemGray6
         collectionView.delegate = self
         collectionView.dataSource = self
