@@ -144,13 +144,13 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
-		84AA8803293F79AD009B4464 /* Controller */ = {
+		84AA8803293F79AD009B4464 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
 				00FC73022944D07C00B80624 /* PopularRecipesViewController.swift */,
 				00FC73002944D05400B80624 /* TrendingViewController.swift */,
 			);
-			path = Controller;
+			path = Controllers;
 			sourceTree = "<group>";
 		};
 		84AA880D293F8296009B4464 /* SecondScreenModel */ = {
@@ -239,7 +239,7 @@
 		D9A2B84D2935506E00C32807 /* PopularRecipes */ = {
 			isa = PBXGroup;
 			children = (
-				84AA8803293F79AD009B4464 /* Controller */,
+				84AA8803293F79AD009B4464 /* Controllers */,
 				D9A2B8A029368A0D00C32807 /* Cells */,
 			);
 			path = PopularRecipes;
