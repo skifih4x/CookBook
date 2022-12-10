@@ -34,6 +34,8 @@ final class CollectionViewTableViewCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         collectionView.backgroundColor = .white
+        
+        collectionView.showsHorizontalScrollIndicator = false
         contentView.addSubview(collectionView)
     }
     

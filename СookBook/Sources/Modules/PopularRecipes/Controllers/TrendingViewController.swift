@@ -18,7 +18,7 @@ class TrendingViewController: UIViewController, UITableViewDelegate, UITableView
         table.register(TrendingCell.self, forCellReuseIdentifier: TrendingCell.identifier)
         table.separatorStyle = .none
         table.backgroundColor = .white
-
+        table.showsVerticalScrollIndicator = false
         table.translatesAutoresizingMaskIntoConstraints = false
         return table
     }()
