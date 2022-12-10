@@ -37,10 +37,8 @@ class DetalViewController: UIViewController {
         
         
     }
-    
-    
     private func ingridientsFatch() {
-        
+
         NetworkService.shared.fetchRandomDishesIngridients(dishId: dish[0].id ?? 0) { [weak self] result in
                 switch result {
                 case .success(let data):
@@ -49,10 +47,10 @@ class DetalViewController: UIViewController {
                    // print("мы получаем : \(self?.vegetabls)")
                 case .failure(let error):
                     print(error)
-                    
+
                 }
             }
-            
+
         }
     
     private func ingrDetailFetch() {
@@ -74,6 +72,7 @@ class DetalViewController: UIViewController {
         
     }
 }
+
 
 extension DetalViewController: UITableViewDataSource {
     
