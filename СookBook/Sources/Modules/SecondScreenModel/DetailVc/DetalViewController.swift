@@ -18,6 +18,11 @@ class DetalViewController: UIViewController {
     var tableView: UITableView = .init()
 
     let stackView = UIStackView()
+    var scrollView: UIScrollView = {
+            let scrollView = UIScrollView()
+            scrollView.translatesAutoresizingMaskIntoConstraints = false
+            return scrollView
+        }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -282,29 +287,92 @@ extension DetalViewController {
         stackView.distribution  = UIStackView.Distribution.equalSpacing
         stackView.alignment = UIStackView.Alignment.leading
         stackView.spacing   = 10.0
-        
+
         stackView.addArrangedSubview(labelNameDish)
         stackView.addArrangedSubview(photoDish)
         stackView.addArrangedSubview(likeLabel)
         stackView.addArrangedSubview(descriptionDish)
         stackView.addArrangedSubview(howMakeLabel)
         stackView.addArrangedSubview(countIngrLabel)
-        
-        
+
+
         stackView.translatesAutoresizingMaskIntoConstraints = false
-        
-        self.view.addSubview(stackView)
-        
-        
-        
+
+
+        stackView.axis  = NSLayoutConstraint.Axis.vertical
+        stackView.distribution  = UIStackView.Distribution.equalSpacing
+        stackView.alignment = UIStackView.Alignment.leading
+
+
+        stackView.addArrangedSubview(labelNameDish)
+        stackView.addArrangedSubview(photoDish)
+        stackView.addArrangedSubview(likeLabel)
+        stackView.addArrangedSubview(descriptionDish)
+        stackView.addArrangedSubview(howMakeLabel)
+        stackView.addArrangedSubview(countIngrLabel)
+
+
+        self.view.addSubview(scrollView)
+        scrollView.addSubview(stackView)
+        self.view.addSubview(tableView)
+
+
+        scrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor,constant: 30).isActive = true
+        scrollView.trailingAnchor.constraint(equalTo: view.trailingAnchor,constant: -30).isActive = true
+        scrollView.topAnchor.constraint(equalTo: view.topAnchor,constant: 80).isActive = true
+        scrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -(view.frame.height / 3 - 10) ).isActive = true
+
+
+        tableView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            stackView.topAnchor.constraint(equalTo: view.topAnchor, constant: 70) ,
-            stackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 30) ,
-            stackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -30) ,
-            stackView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -(view.frame.height / 3 - 10) ) // -300
+            tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor,constant: 30),
+            tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor,constant: -30),
+            tableView.topAnchor.constraint(equalTo: view.bottomAnchor,constant: -(view.frame.height / 3)),//-310
+            tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+
         ])
-        
-        
+
+
+        scrollView.contentSize = CGSize(width: UIScreen.main.bounds.width, height: 2000)
+
+
+
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+
+
+
+
+        stackView.topAnchor.constraint(equalTo: scrollView.topAnchor).isActive = true
+        stackView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor).isActive = true
+        stackView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor).isActive = true
+        stackView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor).isActive = true
+
+
         photoDish.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
+
+
+
+        labelNameDish.leadingAnchor.constraint(equalTo: stackView.leadingAnchor).isActive = true
+        labelNameDish.trailingAnchor.constraint(equalTo: stackView.trailingAnchor).isActive = true
+        labelNameDish.topAnchor.constraint(equalTo: stackView.topAnchor).isActive = true
+
+        photoDish.leadingAnchor.constraint(equalTo: stackView.leadingAnchor).isActive = true
+        photoDish.trailingAnchor.constraint(equalTo: stackView.trailingAnchor).isActive = true
+        photoDish.topAnchor.constraint(equalTo: labelNameDish.bottomAnchor,constant: 27).isActive = true
+
+        likeLabel.leadingAnchor.constraint(equalTo: stackView.leadingAnchor).isActive = true
+        likeLabel.trailingAnchor.constraint(equalTo: stackView.trailingAnchor).isActive = true
+        likeLabel.topAnchor.constraint(equalTo: photoDish.bottomAnchor,constant: 10).isActive = true
+
+
+        descriptionDish.leadingAnchor.constraint(equalTo: stackView.leadingAnchor).isActive = true
+        descriptionDish.trailingAnchor.constraint(equalTo: stackView.trailingAnchor).isActive = true
+        descriptionDish.topAnchor.constraint(equalTo: likeLabel.bottomAnchor,constant: 27).isActive = true
+
+        howMakeLabel.leadingAnchor.constraint(equalTo: stackView.leadingAnchor).isActive = true
+        howMakeLabel.trailingAnchor.constraint(equalTo: stackView.trailingAnchor).isActive = true
+        howMakeLabel.topAnchor.constraint(equalTo: descriptionDish.bottomAnchor,constant: 27).isActive = true
+
+        stackView.widthAnchor.constraint(equalTo: scrollView.widthAnchor).isActive = true
     }
 }
