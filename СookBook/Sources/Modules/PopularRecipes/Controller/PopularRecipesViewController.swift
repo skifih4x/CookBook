@@ -119,10 +119,10 @@ extension PopularRecipesViewController: UITableViewDataSource {
         switch indexPath.section {
         case 0:
             cell.configure(with: popularVegan)
-        case 1:
-            cell.configure(with: trending)
-        case 2:
-            cell.configure(with: popularDessert)
+//        case 1:
+//            cell.configure(with: trending)
+//        case 2:
+//            cell.configure(with: popularDessert)
         default:
             return UITableViewCell()
         }
