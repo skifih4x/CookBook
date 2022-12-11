@@ -12,5 +12,6 @@ struct Dish: Decodable {
     let id: Int?
     let title, image: String?
     let instructions: String?
+    let summary: String?
     let aggregateLikes: Int?    
 }
