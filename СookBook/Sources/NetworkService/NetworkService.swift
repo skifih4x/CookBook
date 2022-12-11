@@ -7,6 +7,12 @@
 
 import Foundation
 
+enum NetworkError: Error {
+    case invalidUrl
+    case noData
+    case decodingError
+}
+
 struct NetworkService {
     
     static let shared = NetworkService()
@@ -105,4 +111,34 @@ struct NetworkService {
         }
         return urlRequest
     }
+    
+    
+    func fetchCharacter(urlString: String, completion: @escaping( Result<Results, NetworkError> ) -> Void ) {
+        
+        
+        guard let url = URL(string: urlString) else { return }
+        
+        URLSession.shared.dataTask(with: url) { data, response, error in
+            guard let data = data else {
+                completion(.failure(.invalidUrl))
+                print(error?.localizedDescription ?? "Error")
+                return
+            }
+            
+            let jsonString = String(data: data, encoding: .utf8)
+            //print("+ ================================================== :\(jsonString) ")
+            do {
+                let decoder = JSONDecoder()
+                let weather = try decoder.decode(Results.self, from: data)
+                //print(weather.first?.amount.metric.unit)
+                DispatchQueue.main.async {
+                    completion(.success(weather))
+                }
+            } catch let error {
+                print(error)
+            }
+        }.resume()
+    }
+    
+    
 }
