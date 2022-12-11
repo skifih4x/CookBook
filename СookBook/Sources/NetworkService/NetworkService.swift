@@ -45,7 +45,7 @@ struct NetworkService {
             if let data =  data {
                 result = .success(data)
                 let responseString = String(data: data, encoding: .utf8) ?? "Не могу пробразовать дату в строку"
-                print("The response is: \(responseString)")
+                //print("The response is: \(responseString)")
             } else if let error = error {
                 result = .failure(error)
                 print("The error is : \(error.localizedDescription)")
@@ -76,17 +76,12 @@ struct NetworkService {
                 let decodedData = response.ingredients
                 guard let decoded = decodedData else { return }
                 completion(.success(decoded))
-//                completion(.failure(AppError.unknownError))
                 }
-//            if let newData = response.ingredients {
-//                completion(.success(newData))
-//            }
+
                 
             case .failure(let error):
                 completion(.failure(error))
-    
-//        case .failure(let newError):
-//            completion(.failure(newError))
+
         }
     
     

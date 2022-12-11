@@ -14,8 +14,6 @@ final class PopularRecipesViewController: UIViewController, CollectionViewTableV
         navigationController?.present(vc, animated: true)
     }
     
-//    var dishD : Dish?
-    
     let sectionTitles: [String] = ["Trending now🔥", "Popular Vegan", "Popular Dessert"]
     
     var trending = [Dish]()

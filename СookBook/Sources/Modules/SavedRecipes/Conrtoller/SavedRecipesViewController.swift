@@ -8,6 +8,7 @@
 import UIKit
 
 final class SavedRecipesViewController: UIViewController {
+    var dishRandom = [Dish]()
     
     private lazy var savedRecipesTableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .plain)
@@ -23,21 +24,41 @@ final class SavedRecipesViewController: UIViewController {
         view.backgroundColor = .white
         title = "Saved recipes"
         view.addSubview(savedRecipesTableView)
+        
+        fetchRecipes { [weak self] model in
+            self?.dishRandom = model
+        }
     }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         savedRecipesTableView.frame = view.bounds
     }
+    
+    func fetchRecipes(completion: @escaping ([Dish]) -> ()) {
+        NetworkService.shared.fetchRandomDishes() { [weak self] result in
+            switch result {
+            case .success(let data):
+                completion(data)
+                self?.savedRecipesTableView.reloadData()
+            case .failure(let error):
+                print(error)
+            }
+        }
+    }
+    
 }
 
 extension SavedRecipesViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        10
+       return dishRandom.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: SavedRecipesCell.identifier, for: indexPath) as? SavedRecipesCell else { return UITableViewCell() }
+        
+        cell.configure(contact: dishRandom[indexPath.row])
+        
         return cell
     }
     
@@ -56,6 +77,8 @@ extension SavedRecipesViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
             let deleteAction = UIContextualAction(style: .destructive, title: "Delete") { [weak self] _, _, complete in
                 
+                
+                self?.dishRandom.remove(at: indexPath.row)
                 tableView.deleteRows(at: [indexPath], with: .automatic)
                 complete(true)
             }

@@ -79,6 +79,7 @@ class VegetableCell: UITableViewCell {
         avatar.kf.setImage(with: contact.image?.asUrlImage)
         nameLabel.text = contact.name?.firstUppercased
         //descriptionLabel.text = contact.
+        
     }
     
     func configures(contact: Ingridient) {

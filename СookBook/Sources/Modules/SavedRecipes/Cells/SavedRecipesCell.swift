@@ -117,4 +117,10 @@ final class SavedRecipesCell: UITableViewCell {
             likesLabel.trailingAnchor.constraint(equalTo: viewForLikes.trailingAnchor, constant: -2)
         ])
     }
+    
+    func configure(contact: Dish) {
+        dishImageView.kf.setImage(with: contact.image?.asUrl )
+        titleLabel.text = contact.title
+        likesLabel.text = " \(contact.aggregateLikes ?? 0)"
+    }
 }
