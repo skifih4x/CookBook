@@ -8,11 +8,6 @@
 import UIKit
 
 final class PopularRecipesViewController: UIViewController, CollectionViewTableViewCellDelegate {
-    func categoryTapped(_ cell: CollectionViewTableViewCell) {
-        let vc = DetalViewController()
-        vc.dish = CollectionViewTableViewCell.dishId
-        navigationController?.present(vc, animated: true)
-    }
     
     let sectionTitles: [String] = ["Trending now🔥", "Popular Vegan", "Popular Dessert"]
     
@@ -188,5 +183,11 @@ extension PopularRecipesViewController: UITableViewDataSource {
         let defaultOffset = view.safeAreaInsets.top
         let offset = scrollView.contentOffset.y + defaultOffset
         navigationController?.navigationBar.transform = .init(translationX: 0, y: min(0, -offset))
+    }
+
+    func categoryTapped(_ cell: CollectionViewTableViewCell) {
+        let vc = DetalViewController()
+        vc.dish = CollectionViewTableViewCell.dishId
+        navigationController?.pushViewController(vc, animated: true)
     }
 }

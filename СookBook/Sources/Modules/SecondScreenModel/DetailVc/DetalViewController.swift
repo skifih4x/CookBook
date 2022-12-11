@@ -197,7 +197,7 @@ extension DetalViewController {
     func setupHowMakeLabel() {
         howMakeLabel.textColor = .black
         howMakeLabel.numberOfLines = 0
-        howMakeLabel.text = "\(dish[0].instructions ?? "")"
+        howMakeLabel.text = "\(dish[0].instructions?.htmlToString ?? "")"
         howMakeLabel.font = howMakeLabel.font.withSize(15)
         self.view.addSubview(howMakeLabel)
     }
@@ -221,7 +221,7 @@ extension DetalViewController {
         
         descriptionDish.textColor = .black
         descriptionDish.numberOfLines = 0
-        descriptionDish.text = ""
+        descriptionDish.text = "\(dish[0].summary?.htmlToString ?? "")"
         descriptionDish.font = descriptionDish.font.withSize(15)
         self.view.addSubview(descriptionDish)
         
